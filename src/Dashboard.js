@@ -69,7 +69,7 @@ class Dashboard extends Component {
 
         return (
 
-          <div className="dash">
+          <div align="center" className="dash">
                      
             <div>
             
@@ -108,7 +108,7 @@ class Dashboard extends Component {
 
       return (
 
-        <div className="dash">
+        <div className="dash" align="center">
 
            <div className="Container">
             
