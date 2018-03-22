@@ -74,6 +74,7 @@ class Dashboard extends Component {
             <div>
             
             <h1>Dashboard</h1>
+            {console.log(this.props.cantFichasGana)}
               <table style={style}>
               <tbody>
                 {this.state.metodo.matriz.map((listaFicha, index) => (
