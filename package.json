@@ -1,7 +1,7 @@
 {
   "name": "nenlinea",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "bootstrap": "^4.0.0",
     "jquery": "^1.9.1",

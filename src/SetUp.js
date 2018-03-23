@@ -22,13 +22,13 @@ class SetUp extends Component {
 
       handleChangeCantFichasGana(event) {
         this.setState({cantFichasGana: event.target.value});
-        alert('El tamaño gane es: ' + this.state.cantFichasGana);
+        
        
       }
     
       handleSubmit(event) {
-        alert('El tamaño elegido es: ' + this.state.tamTablero);
-        alert('El tamaño gane es: ' + this.state.cantFichasGana);
+        //alert('El tamaño elegido es: ' + this.state.tamTablero);
+        //alert('El tamaño gane es: ' + this.state.cantFichasGana);
         event.preventDefault();
 
         ReactDOM.render(
@@ -39,27 +39,49 @@ class SetUp extends Component {
     
       render() {
         return (
-            <div className="container">
+            <div className="container" >
             <br></br>
+            <h2>Configuración el juego</h2>
             <hr></hr>
             <form onSubmit={this.handleSubmit}>
              
-                <div className="form-group row">
+                <div className="">
                 <label>
                 Tamaño de tablero:
               </label>
-                  <div className="col-xs-3">
+                  <div className="">
                     <input className="form-control" type="number" placeholder="Digite tamaño" required min="1" value={this.state.tamTablero} onChange={this.handleChangeTamTablero} />
                   </div>
              
                   <label>
                 Cantidad de fichas para gane:
+                
               </label>
-                  <div className="col-xs-3">
-                    <input className="form-control" type="number" placeholder="Digite cantidad de fichas en linea para gane" required min="1" value={this.state.cantFichasGana} onChange={this.handleChangeCantFichasGana} />
+                  <div className="">
+                    <input className="form-control" type="number" placeholder="Digite cantidad de fichas en linea para gane" required min="2" value={this.state.cantFichasGana} onChange={this.handleChangeCantFichasGana} />
                   </div>
 
-                  <input className="btn"  type="submit" value="OK" />
+                  {/*<div class="form-check">  //para elegir color de ficha (aun no funciona)
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
+                    <label class="form-check-label" for="exampleRadios1" >
+                    <img src="./ficha.png"/>
+                      Ficha roja
+                    </label>
+                  </div>
+
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
+                    <label class="form-check-label" for="exampleRadios1" >
+                    <img src="./ficha2.png"/>
+                      Ficha amarilla
+                    </label>
+        </div>*/}
+
+
+
+
+                  <br></br>
+                  <input  className="btn"  type="submit" value="OK" />
               </div>
           </form>
             
