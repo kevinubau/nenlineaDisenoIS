@@ -3,3 +3,4 @@ npm install bootstrap --save
 npm install --save reactstrap@next react react-dom
 npm install --save jquery@1.9.1
 npm install --save react-google-login-component
+npm install react-google-signin 

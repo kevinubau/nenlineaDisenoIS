@@ -3,25 +3,41 @@ import React, { Component } from 'react';
 import './index.css';
 import Dashboard from './Dashboard';
 import SetUp from './SetUp';
+import Main from './Main';
 import 'bootstrap/dist/css/bootstrap.css';
-import {GoogleLogin} from 'react-google-login';
-
+//import {GoogleLogin} from 'react-google-login';
+import GoogleSignIn from "react-google-signin";
 
 class Login extends Component {
 
 
     constructor(props) {
         super(props);
+        this.state = { usuario:{} };
         
       }
 
+      onSignIn(userProfile, accessToken) {
+
+        this.setState({usuario:userProfile})
+        console.log(userProfile)
+    }
+    signOut() {
+        this.googleAuth.signOut();
+    }
+
       render() {
+        if(this.state.usuario.name != null){
+
+
+            return <Main usuario={this.state.usuario} />
+        }
 
         return (
-            <div id='mainLoginDiv' className=''>
+            <div  className=''>
 
 
-            <div id='panel'>
+            {/*<div id='panel'>
                 <div id='titulo'>
                     <h1><span className="label label-default">N en línea</span></h1>
                 </div>
@@ -31,17 +47,16 @@ class Login extends Component {
                 </div>
                 
                 <div className="g-signin2" data-onsuccess="onSignIn"></div>
+
+
+            </div>*/}
+            <GoogleSignIn clientId="706263760625-ccdk5mm3h2onughliisgse8480qgn02k"
+            			  ref={g => this.googleAuth = g}
+            			  onSuccess={this.onSignIn.bind(this)}
+            />
+
                 
-
-            
-               
-                
-
-
-            </div>
-
-    
-
+            <button onClick={this.signOut.bind(this)}> Sign Out </button>  
 
         </div>
          

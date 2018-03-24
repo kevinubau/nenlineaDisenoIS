@@ -4,6 +4,7 @@ import './index.css';
 import Login from './Login';
 import Dashboard from './Dashboard';
 import SetUp from './SetUp';
+import Main from './Main';
 
 import 'bootstrap/dist/css/bootstrap.css';
 

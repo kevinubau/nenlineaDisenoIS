@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Client from './Client';
 import ReactDOM from 'react-dom';
 import Dashboard from './Dashboard';
-
+import GoogleSignIn from "react-google-signin";
 class SetUp extends Component {
 
     constructor(props) {
@@ -13,6 +13,9 @@ class SetUp extends Component {
         this.handleChangeCantFichasGana = this.handleChangeCantFichasGana.bind(this);
 
         this.handleSubmit = this.handleSubmit.bind(this);
+      }
+      signOut() {
+        this.googleAuth.signOut();
       }
     
       handleChangeTamTablero(event) {

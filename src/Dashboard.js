@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Client from './Client';
 //import axios from 'axios';
-
+import GoogleSignIn from "react-google-signin";
 class Dashboard extends Component {
 
   constructor(props){
@@ -11,11 +11,24 @@ class Dashboard extends Component {
     this.state = { metodo:{} };
     this.client.metodoPOST(this.props.tam).then(result => this.setState({metodo:result}));    
     console.log("constructor...");
-
+    
+  }
+  pintarGane(){
+    if (this.state.metodo.gana===1){
+      console.log("Gana fichas rojas")
+      alert("Ganó el jugador con fichas rojas!");
+     
+    }
+    else if(this.state.metodo.gana===2){
+      console.log("Gana fichas amarillas")
+      alert("Ganó el jugador con fichas amarillas!");
+    }
 
   }
 
-
+  signOut() {
+    this.googleAuth.signOut();
+  }
   casilla(i, j){
 
     this.state.metodo.jugadaX = i;
@@ -82,7 +95,6 @@ class Dashboard extends Component {
                   
                   {listaFicha.map((ficha, ind)=> (
 
-
                   <td style={style} key={index+ind+ficha} onClick={() => this.casilla(index, ind)}> <img src={this.setImageNinLine(ficha.status)} key={index+ind+ficha}  alt={ficha.status}/> </td>
 
                 ))}
@@ -100,7 +112,7 @@ class Dashboard extends Component {
 
            </div>
 
-              
+              {this.pintarGane()}
           </div>
     
         );
