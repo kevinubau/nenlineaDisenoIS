@@ -5,10 +5,10 @@ import Login from './Login';
 import Dashboard from './Dashboard';
 import SetUp from './SetUp';
 import Main from './Main';
-
+import WaitingForPlayer from './WaitingForPlayer';
 import 'bootstrap/dist/css/bootstrap.css';
 
 ReactDOM.render(
-  <SetUp />,
+  <Login />,
   document.getElementById('root')
 );

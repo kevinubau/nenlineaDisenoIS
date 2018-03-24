@@ -3,6 +3,8 @@ import Client from './Client';
 import ReactDOM from 'react-dom';
 import Dashboard from './Dashboard';
 import GoogleSignIn from "react-google-signin";
+import WaitingForPlayer from './WaitingForPlayer';
+
 class SetUp extends Component {
 
     constructor(props) {
@@ -35,7 +37,7 @@ class SetUp extends Component {
         event.preventDefault();
 
         ReactDOM.render(
-            <Dashboard tam={this.state.tamTablero} cantFichasGana={this.state.cantFichasGana} />,
+            <WaitingForPlayer tam={this.state.tamTablero} cantFichasGana={this.state.cantFichasGana} />,
             document.getElementById('root')
           );
       }

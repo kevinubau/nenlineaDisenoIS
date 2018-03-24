@@ -13,12 +13,14 @@ class Dashboard extends Component {
     console.log("constructor...");
     
   }
+  
   pintarGane(){
     if (this.state.metodo.gana===1){
       console.log("Gana fichas rojas")
       alert("Ganó el jugador con fichas rojas!");
      
     }
+
     else if(this.state.metodo.gana===2){
       console.log("Gana fichas amarillas")
       alert("Ganó el jugador con fichas amarillas!");
@@ -29,6 +31,7 @@ class Dashboard extends Component {
   signOut() {
     this.googleAuth.signOut();
   }
+
   casilla(i, j){
 
     this.state.metodo.jugadaX = i;
