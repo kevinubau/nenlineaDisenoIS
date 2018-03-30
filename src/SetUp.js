@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Client from './Client';
+//import Client from './Client';
 import ReactDOM from 'react-dom';
-import Dashboard from './Dashboard';
-import GoogleSignIn from "react-google-signin";
+//import Dashboard from './Dashboard';
+//import GoogleSignIn from "react-google-signin";
 import WaitingForPlayer from './WaitingForPlayer';
 
 class SetUp extends Component {
@@ -83,13 +83,13 @@ class SetUp extends Component {
         </div>*/}
 
 
-
+            
 
                   <br></br>
                   <input  className="btn"  type="submit" value="OK" />
               </div>
           </form>
-            
+          
             </div>
           
         );

@@ -1,8 +1,7 @@
-import ReactDOM from 'react-dom';
+//import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
-import './index.css';
-import Dashboard from './Dashboard';
-import SetUp from './SetUp';
+//import Dashboard from './Dashboard';
+//import SetUp from './SetUp';
 import Main from './Main';
 import 'bootstrap/dist/css/bootstrap.css';
 //import {GoogleLogin} from 'react-google-login';

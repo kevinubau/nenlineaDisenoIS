@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Client from './Client';
 //import axios from 'axios';
-import GoogleSignIn from "react-google-signin";
+//import GoogleSignIn from "react-google-signin";
 class Dashboard extends Component {
 
   constructor(props){
@@ -34,8 +34,10 @@ class Dashboard extends Component {
 
   casilla(i, j){
 
-    this.state.metodo.jugadaX = i;
-    this.state.metodo.jugadaY = j;
+    //this.state.metodo.jugadaX = i;
+    this.setState({jugadaX: i});
+    this.setState({jugadaY: j});
+    //this.state.metodo.jugadaY = j;
     this.client.validarPOST(this.state.metodo).then(result => this.setState({metodo:result}));    
     
   }
