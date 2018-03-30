@@ -34,9 +34,11 @@ class Dashboard extends Component {
 
   casilla(i, j){
 
+    var obj = this.state.metodo;
+    obj.jugadaX = i;
+    obj.jugadaY = j;
+    this.setState({metodo:obj})
     //this.state.metodo.jugadaX = i;
-    this.setState({jugadaX: i});
-    this.setState({jugadaY: j});
     //this.state.metodo.jugadaY = j;
     this.client.validarPOST(this.state.metodo).then(result => this.setState({metodo:result}));    
     
