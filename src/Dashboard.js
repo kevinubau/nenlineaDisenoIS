@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Client from './Client';
 //import axios from 'axios';
 //import GoogleSignIn from "react-google-signin";
+import 'bootstrap/dist/css/bootstrap.css';
+
 class Dashboard extends Component {
 
   constructor(props){

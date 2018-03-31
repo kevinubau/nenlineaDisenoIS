@@ -21,6 +21,7 @@ class Login extends Component {
         this.setState({usuario:userProfile})
         console.log(userProfile)
     }
+    
     signOut() {
         this.googleAuth.signOut();
     }

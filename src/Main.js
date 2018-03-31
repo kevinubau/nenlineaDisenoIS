@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 //import Dashboard from './Dashboard';
 import SetUp from './SetUp';
 import PartidasDisponibles from './PartidasDisponibles';
-import 'bootstrap/dist/css/bootstrap.css';
 //import GoogleSignIn from "react-google-signin";
 //import { BrowserRouter, Route, Router, Link } from 'react-router-dom'
 
@@ -27,45 +26,57 @@ class Main extends Component {
         
         
     }
-
+    divStyle = {
+        border: '1px solid',
+        
+      };
 
     render() {
         return (
-            <div>
-                
-                <div className="col-sm-6" >
+            
+            <div className="container">
+                <br/>
+                <div className="row ">
                     
                     {console.log(this.props.usuario)}
 
-                    <div>
-                        <img src={this.props.usuario.imageUrl} alt={"profile picture of"+this.props.usuario.name}/>
-                    </div>
-                    <div className="col-sm-6 col-md-8">
-                        <b>Nombre:</b> {this.props.usuario.name}
-                      
-                        <p>
-                            <i className="glyphicon glyphicon-envelope"><b>E-Mail: </b></i>{this.props.usuario.email}
-                            <br />
+                    <div className="col-sm-6 col-md-4 ">
 
-                            <br />
-                        </p>
-                   
+                        <table className="table ">
+                            <tbody>
+                            <tr>
+                                <td rowSpan="2"><img src={this.props.usuario.imageUrl} alt={"profile picture of"+this.props.usuario.name}/></td>
+                                <td><i><b>Nombre:</b></i> {this.props.usuario.name}  </td>
+                         
+                            </tr>
+                            <tr>
+                                <td><i className="glyphicon glyphicon-envelope"><b>E-Mail: </b></i>{this.props.usuario.email}</td>
+
+                            </tr>
+                            </tbody>
+                         
+
+                        </table>
                         
+  
+
+                        <form onSubmit={this.redirectToGameSetUp}>
+                            <input className="btn btn-secondary btn-lg" type="submit" value="Iniciar un Juego Nuevo" onClick={this.redirectToGameSetUp} />
+                        </form>
+                   
                     </div>
+
                     
+
+                    <div className="col-sm-6 col-md-8">
+                        <PartidasDisponibles/>
+                    </div>
+
+
+
+                </div>
+
                 
-
-                </div>
-
-                <div>
-                    <form onSubmit={this.redirectToGameSetUp}>
-                        <input className="btn btn-secondary btn-lg" type="submit" value="Iniciar un Juego Nuevo" onClick={this.redirectToGameSetUp} />
-                    </form>
-                </div>
-
-                <div>
-                    <PartidasDisponibles/>
-                </div>
                 
             </div>
 

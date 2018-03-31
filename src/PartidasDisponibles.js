@@ -9,7 +9,27 @@ class PartidasDisponibles extends Component{
 
         return(
             <div>
-                <h4 className="">Partidas Disponibles:</h4>
+
+                <div>
+                    <h4><kbd>Partidas Disponibles:</kbd></h4>
+                </div>
+                
+                <div className="container">
+
+                    <div className="box">
+                        <span className="badge">Tamaño: 4</span><span className="badge">Jugador: Ejemplo</span><br/>
+                        <button className="btn">Aceptar</button>
+                    </div>
+                    <hr/>
+
+                    <div className="box">
+                        <span className="badge">Tamaño: 6</span><span className="badge">Jugador: Ejemplo</span><br/>
+                        <button className="btn">Aceptar</button>
+                    </div>
+                    <hr/>
+                  
+
+                </div>
 
             </div>
         )

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Dashboard from './Dashboard';
 //import GoogleSignIn from "react-google-signin";
-//import WaitingForPlayer from './WaitingForPlayer';
+import WaitingForPlayer from './WaitingForPlayer';
 
 class SetUp extends Component {
 
@@ -35,10 +35,10 @@ class SetUp extends Component {
         //alert('El tamaño gane es: ' + this.state.cantFichasGana);
         event.preventDefault();
 
-        ReactDOM.render(/*
+        ReactDOM.render(
             <WaitingForPlayer tam={this.state.tamTablero} cantFichasGana={this.state.cantFichasGana} />,
-            document.getElementById('root')*/
-            <Dashboard tam={this.state.tamTablero}/>,  document.getElementById('root')
+            document.getElementById('root')
+            //<Dashboard tam={this.state.tamTablero}/>,  document.getElementById('root')
           );
           
       }
