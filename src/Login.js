@@ -6,7 +6,7 @@ import Main from './Main';
 import 'bootstrap/dist/css/bootstrap.css';
 //import {GoogleLogin} from 'react-google-login';
 import GoogleSignIn from "react-google-signin";
-
+import "./Login.css";
 class Login extends Component {
 
 
@@ -34,31 +34,20 @@ class Login extends Component {
         }
 
         return (
-            <div  className=''>
+            <div  className="container" align="center" >
+                <hr/>
+                <h1 className="text-uppercase mb-0">N en Línea</h1>
+                <hr/>
+                <GoogleSignIn clientId="706263760625-ccdk5mm3h2onughliisgse8480qgn02k"
+                            ref={g => this.googleAuth = g}
+                            onSuccess={this.onSignIn.bind(this)}
+                />
+                <br/>
+                <p class="font-weight-light">Inicia sesión con tu cuenta de google!</p>
+                    
+                {/*<button onClick={this.signOut.bind(this)}> Sign Out </button>*/}
 
-
-            {/*<div id='panel'>
-                <div id='titulo'>
-                    <h1><span className="label label-default">N en línea</span></h1>
-                </div>
-
-                <div>
-                    <h3><span className="label">Inicia sesión con tu cuenta de Google para comenzar!</span></h3>
-                </div>
-                
-                <div className="g-signin2" data-onsuccess="onSignIn"></div>
-
-
-            </div>*/}
-            <GoogleSignIn clientId="706263760625-ccdk5mm3h2onughliisgse8480qgn02k"
-            			  ref={g => this.googleAuth = g}
-            			  onSuccess={this.onSignIn.bind(this)}
-            />
-
-                
-            <button onClick={this.signOut.bind(this)}> Sign Out </button>  
-
-        </div>
+            </div>
          
           
         );

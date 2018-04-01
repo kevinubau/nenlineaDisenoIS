@@ -1,10 +1,8 @@
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
-//import Dashboard from './Dashboard';
 import SetUp from './SetUp';
 import PartidasDisponibles from './PartidasDisponibles';
-//import GoogleSignIn from "react-google-signin";
-//import { BrowserRouter, Route, Router, Link } from 'react-router-dom'
+import "./Main.css";
 
 class Main extends Component {
 
