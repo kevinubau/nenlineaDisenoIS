@@ -8,15 +8,15 @@ export default class Client{
             //request.setRequestHeader();
             var request = new XMLHttpRequest();
             
-            request.open("POST", "http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
+            request.open("POST", "http://localhost:8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
 
             request.onreadystatechange = () => {
             
                 var raw =  request.responseText;   
-                
+                console.log("metodoPOST raw: "+raw);
                 var obj = JSON.parse(raw);
 
-                console.log("metodoPOST raw: "+raw);
+                
             
                 resolve(obj);
                 
@@ -62,6 +62,39 @@ export default class Client{
         
         });
         
+        return result;
+
+
+    }
+
+
+    getJuegos(param){//para llenar la matriz inicial del juego
+
+        
+        var result = new Promise((resolve, reject) => {
+            
+            var request = new XMLHttpRequest();
+            
+            request.open("POST", "http://localhost:8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
+
+            request.onreadystatechange = () => {
+            
+                var raw =  request.responseText;   
+                console.log("getJuegos raw: "+raw);
+                var obj = JSON.parse(raw);
+
+                
+            
+                resolve(obj);
+                
+            }
+
+            request.send(param);
+        
+        
+        
+        });
+ 
         return result;
 
 

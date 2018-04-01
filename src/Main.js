@@ -30,8 +30,12 @@ class Main extends Component {
         border: '1px solid',
         
       };
-
+      
     render() {
+        const divStyle={
+            overflowY: 'scroll'
+         
+          }
         return (
             
             <div className="container">
@@ -68,7 +72,7 @@ class Main extends Component {
 
                     
 
-                    <div className="col-sm-6 col-md-8">
+                    <div style={divStyle} className="col-sm-6 col-md-8">
                         <PartidasDisponibles/>
                     </div>
 

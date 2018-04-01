@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
+import Client from './Client';
+
 
 class PartidasDisponibles extends Component{
 
-   
+    constructor(props){
+        super(props);
+    
+        this.client = new Client();    
+        this.state = {juegos:[]};
+    
+        
+        this.client.getJuegos("listaJuegos").then(result => this.setState({juegos:result}));    
+        console.log("constructor partidas disponibles...");
+        
+      }
 
 
     render(){
@@ -13,25 +25,24 @@ class PartidasDisponibles extends Component{
                 <div>
                     <h4><kbd>Partidas Disponibles:</kbd></h4>
                 </div>
-                
+       
                 <div className="container">
 
-                    <div className="box">
-                        <span className="badge">Tamaño: 4</span><span className="badge">Jugador: Ejemplo</span><br/>
-                        <button className="btn">Aceptar</button>
-                    </div>
-                    <hr/>
+                    {this.state.juegos.map((juego, index)=> (
 
-                    <div className="box">
-                        <span className="badge">Tamaño: 6</span><span className="badge">Jugador: Ejemplo</span><br/>
-                        <button className="btn">Aceptar</button>
-                    </div>
-                    <hr/>
-                  
+                        <div key={index*2} className="box">
+                            <span className="badge">Tamaño: {juego.tam}</span><span className="badge">Jugador: {juego.jugador1}</span><br/>
+                            <button key={index} id={juego.id} className="btn">Aceptar</button>
+                            <hr></hr>
+                        </div>
+                         
+                    ))}
 
                 </div>
+                    
 
-            </div>
+                
+                </div>
         )
     }
 

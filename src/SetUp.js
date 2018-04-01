@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import Dashboard from './Dashboard';
 //import GoogleSignIn from "react-google-signin";
 import WaitingForPlayer from './WaitingForPlayer';
+import axios from 'axios';
+import Client from './Client';
 
 class SetUp extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {tamTablero: '', cantFichasGana: ''};
-    
+        this.client = new Client();  
+        this.state = {metodo:{}, tamTablero: '', cantFichasGana: ''};
+
         this.handleChangeTamTablero = this.handleChangeTamTablero.bind(this);
         this.handleChangeCantFichasGana = this.handleChangeCantFichasGana.bind(this);
 
@@ -31,14 +34,48 @@ class SetUp extends Component {
       }
     
       handleSubmit(event) {
-        //alert('El tamaño elegido es: ' + this.state.tamTablero);
+        console.log('El tamaño elegido es: ' + this.state.tamTablero);
         //alert('El tamaño gane es: ' + this.state.cantFichasGana);
         event.preventDefault();
+        //axios.get('http://localhost:8080/index.html', true)
+        //.then(response => console.log(response))
+        /*axios.post('http://localhost:8080/nenlineaBackend/nenlineaBackend', {
+          firstName: 'Fred',
+          lastName: 'Flintstone'
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+        public String id;
+        public String jugador1;
+        public String jugador2;
+        public String tam;
+        public Ficha[][] matriz;
+        public int jugadaX;
+        public int jugadaY;
+        public int gana;
+        */
+        var obj = new Object();
 
+        obj.id = "";
+        obj.jugador1 = this.props.usuario.name;
+        obj.jugador2 = null;
+        obj.tam = this.state.tamTablero;
+        obj.matriz = null;
+        obj.jugadaX = null;
+        obj.jugadaY = null;
+        obj.gana = null;
+        
+
+        var jsonString= JSON.stringify(obj);
+        this.client.metodoPOST(jsonString).then(result => this.setState({metodo:result}));  
         ReactDOM.render(
             <WaitingForPlayer tam={this.state.tamTablero} cantFichasGana={this.state.cantFichasGana} />,
             document.getElementById('root')
-            //<Dashboard tam={this.state.tamTablero}/>,  document.getElementById('root')
+            //<Dashboard tam={this.state.tamTablero} usuario={this.props.usuario}/>,  document.getElementById('root')
           );
           
       }
@@ -56,7 +93,7 @@ class SetUp extends Component {
                 Tamaño de tablero:
               </label>
                   <div className="">
-                    <input className="form-control" type="number" placeholder="Digite tamaño" required min="1" value={this.state.tamTablero} onChange={this.handleChangeTamTablero} />
+                    <input name="tama" className="form-control" type="number" placeholder="Digite tamaño" required min="1" value={this.state.tamTablero} onChange={this.handleChangeTamTablero} />
                   </div>
              
                   <label>
@@ -89,7 +126,7 @@ class SetUp extends Component {
                   <br></br>
                   <input  className="btn"  type="submit" value="OK" />
               </div>
-          </form>
+            </form>
           
             </div>
           

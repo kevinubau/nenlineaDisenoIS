@@ -10,7 +10,7 @@ class WaitingForPlayer extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container" align="center">
 
                 <div className="row align-items-center">
 

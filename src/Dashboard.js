@@ -3,7 +3,7 @@ import Client from './Client';
 //import axios from 'axios';
 //import GoogleSignIn from "react-google-signin";
 import 'bootstrap/dist/css/bootstrap.css';
-
+import Chat from './Chat';
 class Dashboard extends Component {
 
   constructor(props){
@@ -11,7 +11,12 @@ class Dashboard extends Component {
 
     this.client = new Client();    
     this.state = { metodo:{} };
-    this.client.metodoPOST(this.props.tam).then(result => this.setState({metodo:result}));    
+
+    var obj = new Object();
+    obj.name = this.props.usuario.name;
+    obj.tam = this.props.tam;
+    var jsonString= JSON.stringify(obj);
+    this.client.metodoPOST(jsonString).then(result => this.setState({metodo:result}));    
     console.log("constructor...");
     
   }
@@ -87,37 +92,51 @@ class Dashboard extends Component {
           margin: 0,
           padding: 0,
           borderCollapse: "collapse"
+          
         };
+        const divStyle={
+          overflowY: 'scroll',
+          overflowX: 'scroll'
+        }
 
         return (
 
-          <div align="center" className="dash">
+          <div className="container">
                      
-            <div>
-            
-            <h1>Dashboard</h1>
-            {console.log(this.props.cantFichasGana)}
-              <table style={style}>
-              <tbody>
-                {this.state.metodo.matriz.map((listaFicha, index) => (
-                <tr key={index}>
+            <div className="row">
+              <div className="col-sm-8 col-md-8" style={divStyle}>
+                <h1>Dashboard</h1>
+
+                <table style={style}>
+                  <tbody>
+                    {this.state.metodo.matriz.map((listaFicha, index) => (
+                    <tr key={index}>
+                      
+                      {listaFicha.map((ficha, ind)=> (
+
+                      <td style={style} key={index+ind+ficha} onClick={() => this.casilla(index, ind)}> <img src={this.setImageNinLine(ficha.status)} key={index+ind+ficha}  alt={ficha.status}/> </td>
+
+                    ))}
+                    
+                    
                   
-                  {listaFicha.map((ficha, ind)=> (
+                    </tr>
+                  ))}
 
-                  <td style={style} key={index+ind+ficha} onClick={() => this.casilla(index, ind)}> <img src={this.setImageNinLine(ficha.status)} key={index+ind+ficha}  alt={ficha.status}/> </td>
+                  
+                </tbody>
 
-                ))}
+
+                </table>
+
+              </div>
+
+              <div className="col-sm-4 col-md-4">
+                  <Chat />
                 
-                
-              
-                </tr>
-              ))}
 
+              </div>
               
-            </tbody>
-
-            
-            </table>
 
            </div>
 
@@ -130,7 +149,7 @@ class Dashboard extends Component {
 
       return (
 
-        <div className="dash" align="center">
+        <div className="" align="center">
 
            <div className="Container">
             
