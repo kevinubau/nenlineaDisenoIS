@@ -73,9 +73,9 @@ class SetUp extends Component {
         var jsonString= JSON.stringify(obj);
         this.client.metodoPOST(jsonString).then(result => this.setState({metodo:result}));  
         ReactDOM.render(
-            /*<WaitingForPlayer tam={this.state.tamTablero} cantFichasGana={this.state.cantFichasGana} />,
-            document.getElementById('root')*/
-            <Dashboard tam={this.state.tamTablero} usuario={this.props.usuario}/>,  document.getElementById('root')
+            <WaitingForPlayer tam={this.state.tamTablero} cantFichasGana={this.state.cantFichasGana} />,
+            document.getElementById('root')
+            //<Dashboard tam={this.state.tamTablero} usuario={this.props.usuario}/>,  document.getElementById('root')
           );
           
       }

@@ -4,6 +4,7 @@
   "private": false,
   "dependencies": {
     "bootstrap": "^4.0.0",
+    "express": "^4.16.3",
     "jquery": "^1.9.1",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
