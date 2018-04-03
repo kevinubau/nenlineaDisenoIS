@@ -1,23 +1,19 @@
-//import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
-//import Dashboard from './Dashboard';
-//import SetUp from './SetUp';
+import SetUp from './SetUp';
 import Main from './Main';
 import 'bootstrap/dist/css/bootstrap.css';
-//import {GoogleLogin} from 'react-google-login';
 import GoogleSignIn from "react-google-signin";
 import "./Login.css";
+
 class Login extends Component {
 
 
     constructor(props) {
         super(props);
         this.state = { usuario:{} };
-        
-      }
+    }
 
-      onSignIn(userProfile, accessToken) {
-
+    onSignIn(userProfile, accessToken) {
         this.setState({usuario:userProfile})
         console.log(userProfile)
     }

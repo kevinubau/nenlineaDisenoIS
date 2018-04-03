@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Dashboard from './Dashboard';
-//import GoogleSignIn from "react-google-signin";
 import WaitingForPlayer from './WaitingForPlayer';
-import axios from 'axios';
 import Client from './Client';
 
 class SetUp extends Component {
@@ -35,29 +33,8 @@ class SetUp extends Component {
     
       handleSubmit(event) {
         console.log('El tamaño elegido es: ' + this.state.tamTablero);
-        //alert('El tamaño gane es: ' + this.state.cantFichasGana);
         event.preventDefault();
-        //axios.get('http://localhost:8080/index.html', true)
-        //.then(response => console.log(response))
-        /*axios.post('http://localhost:8080/nenlineaBackend/nenlineaBackend', {
-          firstName: 'Fred',
-          lastName: 'Flintstone'
-        })
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-        public String id;
-        public String jugador1;
-        public String jugador2;
-        public String tam;
-        public Ficha[][] matriz;
-        public int jugadaX;
-        public int jugadaY;
-        public int gana;
-        */
+  
         var obj = new Object();
 
         obj.id = "";
