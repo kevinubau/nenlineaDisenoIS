@@ -4,7 +4,9 @@
     text-align:center;
     padding:35px;
 }*/
-  
+#chatbox{
+    color: black;
+}
 form, p, span {
     margin:0;
     padding:0; }
@@ -35,15 +37,16 @@ a {
     text-align:left;
     margin:0 auto;
     margin-bottom:25px;
+    margin-top:25px;
     padding:10px;
     background:#fff;
     height:300px;
-    width:250px;
+    width:300px;
     border:1px solid #ACD8F0;
     overflow:auto; }
   
 #usermsg {
-    width:395px;
+    width:310px;
     border:1px solid #ACD8F0; }
   
 #submit { width: 60px; }

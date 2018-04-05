@@ -39,7 +39,7 @@ class Login extends Component {
                             onSuccess={this.onSignIn.bind(this)}
                 />
                 <br/>
-                <p class="font-weight-light">Inicia sesión con tu cuenta de google!</p>
+                <p className="font-weight-light">Inicia sesión con tu cuenta de google!</p>
                     
                 {/*<button onClick={this.signOut.bind(this)}> Sign Out </button>*/}
 

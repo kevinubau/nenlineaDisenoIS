@@ -44,7 +44,8 @@ export default class Client{
 
             let request = new XMLHttpRequest();
 
-            request.open("POST", "http://localhost:8080/mavenproject1/resources/jsonprueba/validar", true);
+            request.open("POST", "http://localhost:8080/nenlineaBackend/nenlineaBackend");//"http://localhost:8080/mavenproject1/resources/jsonprueba/validar", true);
+            
             request.onreadystatechange = () => {
                 
                 var raw =  request.response;
