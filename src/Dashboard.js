@@ -132,7 +132,7 @@ class Dashboard extends Component {
               </div>
 
               <div className="col-sm-4 col-md-4">
-                  <Chat />
+                  <Chat usuario={this.props.usuario} chat={this.state.metodo.chat} />
                 
 
               </div>

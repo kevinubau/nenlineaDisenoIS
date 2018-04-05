@@ -71,7 +71,7 @@ class Main extends Component {
                     
 
                     <div style={divStyle} className="col-sm-6 col-md-8">
-                        <PartidasDisponibles/>
+                        <PartidasDisponibles usuario={this.props.usuario}/>
                     </div>
 
 

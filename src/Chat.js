@@ -14,7 +14,7 @@ class Chat extends Component{
         obj.tam = this.props.tam;
         var jsonString= JSON.stringify(obj);
         this.client.metodoPOST(jsonString).then(result => this.setState({metodo:result}));   */ 
-        
+        console.log("props chat: "+this.props.chat);
       }
     
     fillChat(){
@@ -25,17 +25,21 @@ class Chat extends Component{
     }
 
 
-    handleChangeChat(message) {
+    handleChangeChat(messageGet) {
         
         var cars = this.state.chat;
-        cars.push(message)
+        messageGet = this.props.usuario.name+": "+messageGet;
+        this.setState({message: messageGet});
+
+        console.log("final state of message: "+this.state.message)
+
+        cars.push(messageGet)
         console.log(cars)
         
         this.setState({chat:cars});
-        console.log("message puta: "+message);
+
         this.setState({message: ""});
-        //document.getElementById("chatbox").innerHTML = event.target.value;
-        //document.getElementById("usermsg").innerHTML = event.target.value;
+    
       }
 
       handleChangeInput(event) {
