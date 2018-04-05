@@ -43,11 +43,23 @@ a {
     height:300px;
     width:300px;
     border:1px solid #ACD8F0;
-    overflow:auto; }
+    overflow:auto; 
+    
+}
+
+
   
 #usermsg {
-    width:310px;
-    border:1px solid #ACD8F0; }
+
+    width: 300px;
+    margin-left: 50px;
+    border:1px solid #ACD8F0;
+}
+
+#enviarBtn{
+    margin-left: 40%;
+    margin-top: 5px;
+}
   
 #submit { width: 60px; }
   
