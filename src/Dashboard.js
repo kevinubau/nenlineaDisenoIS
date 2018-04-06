@@ -19,10 +19,27 @@ class Dashboard extends Component {
    
     
   }
-  
+  tick() {
+    console.log("xxx");
+    
+    this.setState({secondsElapsed: this.state.secondsElapsed + 1});
+    //consultar server por nuevos mensajes
+    var obj = new Object();
+
+   obj.id = this.state.juego.id;
+   obj.descrip = "actualizar";
+    this.client.verificarAceptar(JSON.stringify(obj)).then(result => this.setState({juego:result})); 
+    console.log(JSON.stringify(this.state))
+ }
+
+
+ componentWillUnmount() {
+   clearInterval(this.interval);
+ }
   componentDidMount() {
 
     this.setState({juego: this.props.juego});
+    this.interval = setInterval(this.tick.bind(this), 250);
   }
 
   pintarGane(){

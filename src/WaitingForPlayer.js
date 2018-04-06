@@ -43,6 +43,7 @@ class WaitingForPlayer extends Component {
      }
 
      componentWillUnmount() {
+         
        clearInterval(this.interval);
      }
 

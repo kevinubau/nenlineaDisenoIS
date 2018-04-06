@@ -25,6 +25,11 @@ class Chat extends Component{
          
          this.setState({secondsElapsed: this.state.secondsElapsed + 1});
          //consultar server por nuevos mensajes
+         var obj = new Object();
+
+        obj.id = this.state.juego.id;
+        obj.descrip = "verificar";
+         this.client.verificarAceptar(JSON.stringify(obj)).then(result => this.setState({juego:result})); 
          console.log(JSON.stringify(this.state))
       }
 
