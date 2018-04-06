@@ -8,7 +8,7 @@ export default class Client{
             //request.setRequestHeader();
             var request = new XMLHttpRequest();
             //192.168.43.115 wifi claro
-            request.open("POST", "http://192.168.43.115:8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
+            request.open("POST", "http://localhost:8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
 
             request.onreadystatechange = () => {
                 
@@ -42,7 +42,7 @@ export default class Client{
 
             let request = new XMLHttpRequest();
 
-            request.open("POST", "http://192.168.43.115:8080/nenlineaBackend/nenlineaBackend");//"http://localhost:8080/mavenproject1/resources/jsonprueba/validar", true);
+            request.open("POST", "http://localhost:8080/nenlineaBackend/nenlineaBackend");//"http://localhost:8080/mavenproject1/resources/jsonprueba/validar", true);
             
             request.onreadystatechange = () => {
                 
@@ -74,7 +74,7 @@ export default class Client{
             
             var request = new XMLHttpRequest();
             
-            request.open("POST", "http://192.168.43.115:8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
+            request.open("POST", "http://localhost:8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
 
             request.onreadystatechange = () => {
             
@@ -107,7 +107,7 @@ export default class Client{
             
             var request = new XMLHttpRequest();
             
-            request.open("POST", "http://192.168.43.115:8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
+            request.open("POST", "http://localhost:8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
 
             request.onreadystatechange = () => {
             
@@ -138,7 +138,7 @@ export default class Client{
             
             var request = new XMLHttpRequest();
             
-            request.open("POST", "http://192.168.43.115:8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
+            request.open("POST", "http://localhost:8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
 
             request.onreadystatechange = () => {
             

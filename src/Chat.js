@@ -1,56 +1,60 @@
 import React, { Component } from 'react';
-import './Chat.css';
+import './css/Chat.css';
 import Client from './Client';
 class Chat extends Component{
 
     constructor(props){
+
         super(props);
+
+        this.client = new Client();
         console.log("CONSTRUCTOR CHAT!");
-        this.state = { chat:["Bienvenidos!"], message:"", secondsElapsed: 0 };
+
+        this.state = { chat:["Bienvenidos!"], message:"", secondsElapsed: 0, juego:{} };
+
         this.handleChangeChat = this.handleChangeChat.bind(this);
         this.handleChangeInput = this.handleChangeInput.bind(this);
-        /*var obj = new Object();
-        obj.name = this.props.usuario.name;
-        obj.tam = this.props.tam;
-        var jsonString= JSON.stringify(obj);
-        this.client.metodoPOST(jsonString).then(result => this.setState({metodo:result}));   */ 
-        console.log("props chat: "+this.props.chat);
+        
+        
         console.log("time: "+this.state.secondsElapsed);
-      }
+    }
 
      
 
-      tick() {
-         console.log("xxx");
-         
-         this.setState({secondsElapsed: this.state.secondsElapsed + 1});
-         //consultar server por nuevos mensajes
-         var obj = new Object();
+    tick() {
 
-        obj.id = this.state.juego.id;
-        obj.descrip = "verificar";
-         this.client.verificarAceptar(JSON.stringify(obj)).then(result => this.setState({juego:result})); 
-         console.log(JSON.stringify(this.state))
-      }
-
-      componentDidMount() {
-        console.log("COMPONENT DIDMOUNT!");
-        console.log(JSON.stringify(this.state))
-
-        //this.interval = setInterval(this.tick.bind(this), 250);
-      }
-
-      componentWillUnmount() {
-        clearInterval(this.interval);
-      }
-
-    fillChat(){
-        console.log("send clicked");
-        console.log(JSON.stringify(this.state))
-        document.getElementById("chatbox").innerHTML = "me cago en satanas";
+        console.log("chat");
         
-        
+        this.setState({secondsElapsed: this.state.secondsElapsed + 1});
+        //consultar server por nuevos mensajes
+
+        var obj = {};    
+        obj.id = this.props.juego.id;
+        obj.descrip = "actualizarChat";
+        obj.chat = this.props.juego.chat;
+        this.client.verificarAceptar(JSON.stringify(obj)).then(result => this.setState({juego:result})); 
+        console.log("chat CHAT tick "+JSON.stringify(this.state.juego))
+
+
+        this.setState({chat: this.props.juego.chat});
+        console.log(JSON.stringify(this.state))
     }
+
+        componentDidMount() {
+
+        this.setState({juego: this.props.juego});
+        //console.log("COMPONENT DIDMOUNT!"+JSON.stringify(this.state));
+        console.log("state chat didmount: "+this.state.juego);
+
+        //this.interval = setInterval(this.tick.bind(this), 1000);
+        }
+
+    componentWillUnmount() {
+
+        clearInterval(this.interval);
+    }
+
+
 
 
     handleChangeChat(messageGet) {
@@ -62,11 +66,21 @@ class Chat extends Component{
         console.log("final state of message: "+this.state.message)
 
         cars.push(messageGet)
-        console.log(cars)
         
+        console.log(cars)
+    
         this.setState({chat:cars});
-
         this.setState({message: ""});
+
+    
+        console.log("chat CHAT "+JSON.stringify(this.props.juego.chat))
+        var obj = {};  
+        obj.id = this.props.juego.id;
+        obj.descrip = "actualizarChat";
+        obj.chat = cars;
+        this.client.verificarAceptar(JSON.stringify(obj)).then(result => this.setState({juego:result})); 
+        console.log("chat CHAT handle "+JSON.stringify(this.props.juego))
+        this.setState({chat: this.props.juego.chat});
     
       }
 
@@ -92,7 +106,7 @@ class Chat extends Component{
                         <section id="messages-list">
                            
 
-                                {this.state.chat.map((message, index) => (
+                                {this.props.juego.chat.map((message, index) => (
 
                                    <div key={index}> {message}</div>
 

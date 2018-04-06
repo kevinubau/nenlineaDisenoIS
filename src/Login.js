@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import SetUp from './SetUp';
 import Main from './Main';
 import 'bootstrap/dist/css/bootstrap.css';
 import GoogleSignIn from "react-google-signin";
-import "./Login.css";
+import "./css/Login.css";
 
 class Login extends Component {
 

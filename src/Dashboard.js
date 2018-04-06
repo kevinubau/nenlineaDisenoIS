@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Client from './Client';
-//import axios from 'axios';
-//import GoogleSignIn from "react-google-signin";
 import 'bootstrap/dist/css/bootstrap.css';
 import Chat from './Chat';
+
 class Dashboard extends Component {
 
   constructor(props){
@@ -15,8 +14,6 @@ class Dashboard extends Component {
 
     console.log("PROPS DASHBOARD: "+JSON.stringify(this.props.juego));
     console.log("STATE DASHBOARD: "+JSON.stringify(this.state.juego));
-
-   
     
   }
   tick() {
@@ -24,25 +21,28 @@ class Dashboard extends Component {
     
     this.setState({secondsElapsed: this.state.secondsElapsed + 1});
     //consultar server por nuevos mensajes
-    var obj = new Object();
-
-   obj.id = this.state.juego.id;
-   obj.descrip = "actualizar";
+    var obj = {};
+    obj.id = this.state.juego.id;
+    obj.descrip = "actualizar";
     this.client.verificarAceptar(JSON.stringify(obj)).then(result => this.setState({juego:result})); 
-    console.log(JSON.stringify(this.state))
+    
  }
 
 
  componentWillUnmount() {
+
    clearInterval(this.interval);
+
  }
   componentDidMount() {
 
     this.setState({juego: this.props.juego});
-    this.interval = setInterval(this.tick.bind(this), 250);
+    console.log("chat dash "+JSON.stringify(this.state.juego.chat))
+    //this.interval = setInterval(this.tick.bind(this), 250);
   }
 
   pintarGane(){
+    
     if (this.state.juego.gana===1){
       console.log("Gana fichas rojas")
       alert("Ganó el jugador con fichas rojas!");
@@ -128,15 +128,17 @@ class Dashboard extends Component {
                 <h1>Dashboard</h1>
 
                 <table style={style}>
+
                   <tbody>
+
                     {this.state.juego.matriz.map((listaFicha, index) => (
                     <tr key={index}>
                       
-                      {listaFicha.map((ficha, ind)=> (
+                        {listaFicha.map((ficha, ind)=> (
 
-                      <td style={style} key={index+ind+ficha} onClick={() => this.casilla(index, ind)}> <img src={this.setImageNinLine(ficha.status)} key={index+ind+ficha}  alt={ficha.status}/> </td>
+                        <td style={style} key={index+ind+ficha} onClick={() => this.casilla(index, ind)}> <img src={this.setImageNinLine(ficha.status)} key={index+ind+ficha}  alt={ficha.status}/> </td>
 
-                    ))}
+                      ))}
                     
                     
                   
@@ -152,7 +154,7 @@ class Dashboard extends Component {
               </div>
 
               <div className="col-sm-4 col-md-4">
-                  <Chat usuario={this.props.usuario} chat={this.state.juego.chat} />
+                  <Chat usuario={this.props.usuario} juego={this.state.juego} />
                 
 
               </div>

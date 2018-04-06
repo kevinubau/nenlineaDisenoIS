@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 //import { BrowserRouter, Route, Router, Link } from 'react-router-dom'
 import ReactDOM from 'react-dom';
 import Dashboard from './Dashboard';
-import './waitingForPlayer.css';
+import './css/waitingForPlayer.css';
 import Client from './Client';
 
 
@@ -25,7 +25,7 @@ class WaitingForPlayer extends Component {
         console.log("xxx");
         
         this.setState({secondsElapsed: this.state.secondsElapsed + 1});
-        var obj = new Object();
+        var obj = {};
 
         obj.id = this.state.juego.id;
         obj.descrip = "verificar";
@@ -39,7 +39,7 @@ class WaitingForPlayer extends Component {
        
        console.log(JSON.stringify(this.state))
 
-       this.interval = setInterval(this.tick.bind(this), 250);
+       this.interval = setInterval(this.tick.bind(this), 500);
      }
 
      componentWillUnmount() {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Dashboard from './Dashboard';
 import WaitingForPlayer from './WaitingForPlayer';
 import Client from './Client';
 
@@ -39,7 +38,7 @@ class SetUp extends Component {
   
         event.preventDefault();
   
-        var obj = new Object();
+        var obj = {};
 
         obj.id = "";
         obj.jugador1 = this.props.usuario.name;

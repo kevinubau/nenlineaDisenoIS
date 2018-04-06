@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
 import SetUp from './SetUp';
 import PartidasDisponibles from './PartidasDisponibles';
-import "./Main.css";
+import "./css/Main.css";
 
 class Main extends Component {
 

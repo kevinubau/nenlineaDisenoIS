@@ -1,5 +1,4 @@
 import ReactDOM from 'react-dom';
-
 import React, { Component } from 'react';
 import Client from './Client';
 import Dashboard from './Dashboard';
@@ -18,9 +17,25 @@ class PartidasDisponibles extends Component{
         
       }
 
+      tick() {
+        this.client.getJuegos("listaJuegos").then(result => this.setState({juegos:result}));  
+     }
+
+     componentDidMount() {
+       
+       
+
+       //this.interval = setInterval(this.tick.bind(this), 2000);
+     }
+
+     componentWillUnmount() {
+         
+       clearInterval(this.interval);
+     }
+
     handleAccept(game){
 
-        var obj = new Object();
+        var obj = {};
 
         obj.id = game;
         obj.descrip = "aceptar";
@@ -35,6 +50,7 @@ class PartidasDisponibles extends Component{
     }
 
     goToDash(obj){
+
         this.client.acceptGame(JSON.stringify(obj)).then(result => this.setState({juego:result}));  
         ReactDOM.render(
 
