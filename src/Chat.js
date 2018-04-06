@@ -5,8 +5,8 @@ class Chat extends Component{
 
     constructor(props){
         super(props);
-    
-        this.state = { chat:["Bienvenidos!"], message:"" };
+        console.log("CONSTRUCTOR CHAT!");
+        this.state = { chat:["Bienvenidos!"], message:"", secondsElapsed: 0 };
         this.handleChangeChat = this.handleChangeChat.bind(this);
         this.handleChangeInput = this.handleChangeInput.bind(this);
         /*var obj = new Object();
@@ -15,10 +15,33 @@ class Chat extends Component{
         var jsonString= JSON.stringify(obj);
         this.client.metodoPOST(jsonString).then(result => this.setState({metodo:result}));   */ 
         console.log("props chat: "+this.props.chat);
+        console.log("time: "+this.state.secondsElapsed);
       }
-    
+
+     
+
+      tick() {
+         console.log("xxx");
+         
+         this.setState({secondsElapsed: this.state.secondsElapsed + 1});
+         //consultar server por nuevos mensajes
+         console.log(JSON.stringify(this.state))
+      }
+
+      componentDidMount() {
+        console.log("COMPONENT DIDMOUNT!");
+        console.log(JSON.stringify(this.state))
+
+        //this.interval = setInterval(this.tick.bind(this), 250);
+      }
+
+      componentWillUnmount() {
+        clearInterval(this.interval);
+      }
+
     fillChat(){
         console.log("send clicked");
+        console.log(JSON.stringify(this.state))
         document.getElementById("chatbox").innerHTML = "me cago en satanas";
         
         

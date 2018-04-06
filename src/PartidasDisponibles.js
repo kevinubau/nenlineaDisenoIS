@@ -10,8 +10,8 @@ class PartidasDisponibles extends Component{
         super(props);
     
         this.client = new Client();    
-        this.state = {juegos:[]};
-    
+        this.state = {juegos:[], game: "", juego:{}};
+
         
         this.client.getJuegos("listaJuegos").then(result => this.setState({juegos:result}));    
         console.log("constructor partidas disponibles...");
@@ -19,15 +19,28 @@ class PartidasDisponibles extends Component{
       }
 
     handleAccept(game){
-        console.log("id "+game)
-        ReactDOM.render(
-            //<WaitingForPlayer tam={this.state.tamTablero} cantFichasGana={this.state.cantFichasGana} />,
-            //document.getElementById('root')
-            <Dashboard tam={game.tam} usuario={this.props.usuario}/>,  document.getElementById('root')
-          );
+
+        var obj = new Object();
+
+        obj.id = game;
+        obj.descrip = "aceptar";
+        obj.jugador2 = this.props.usuario.name;
+
+        this.client.acceptGame(JSON.stringify(obj)).then(result => this.setState({juego:result}));  
+        //console.log("DDD "+JSON.stringify(this.state.juego));
+        if(this.state.juego.matriz){
+            this.goToDash(obj);
+        }
+        
     }
 
+    goToDash(obj){
+        this.client.acceptGame(JSON.stringify(obj)).then(result => this.setState({juego:result}));  
+        ReactDOM.render(
 
+            <Dashboard juego={this.state.juego} usuario={this.props.usuario}/>,  document.getElementById('root')
+          );
+    }
 
     render(){
 
@@ -44,7 +57,7 @@ class PartidasDisponibles extends Component{
 
                         <div key={juego.id} className="box">
                             <span className="badge">Tamaño: {juego.tam}</span><span className="badge">Jugador: {juego.jugador1}</span><br/>
-                            <button onClick={() => this.handleAccept(juego)} key={index} id={juego.id} className="btn" >Aceptar</button>
+                            <button onClick={() => this.handleAccept(juego.id)} key={index} id={juego.id} className="btn" >Aceptar</button>
                             <hr></hr>
                         </div>
                          

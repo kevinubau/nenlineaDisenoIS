@@ -9,26 +9,30 @@ class Dashboard extends Component {
   constructor(props){
     super(props);
 
-    this.client = new Client();    
-    this.state = { metodo:{} };
+    this.state = {juego:{}}
+    this.client = new Client();
+   
 
-    var obj = new Object();
-    obj.name = this.props.usuario.name;
-    obj.tam = this.props.tam;
-    var jsonString= JSON.stringify(obj);
-    this.client.metodoPOST(jsonString).then(result => this.setState({metodo:result}));    
-    console.log("constructor...");
+    console.log("PROPS DASHBOARD: "+JSON.stringify(this.props.juego));
+    console.log("STATE DASHBOARD: "+JSON.stringify(this.state.juego));
+
+   
     
   }
   
+  componentDidMount() {
+
+    this.setState({juego: this.props.juego});
+  }
+
   pintarGane(){
-    if (this.state.metodo.gana===1){
+    if (this.state.juego.gana===1){
       console.log("Gana fichas rojas")
       alert("Ganó el jugador con fichas rojas!");
      
     }
 
-    else if(this.state.metodo.gana===2){
+    else if(this.state.juego.gana===2){
       console.log("Gana fichas amarillas")
       alert("Ganó el jugador con fichas amarillas!");
     }
@@ -41,13 +45,13 @@ class Dashboard extends Component {
 
   casilla(i, j){
 
-    var obj = this.state.metodo;
+    var obj = this.state.juego;
     obj.jugadaX = i;
     obj.jugadaY = j;
-    this.setState({metodo:obj})
+    this.setState({juego:obj})
     //this.state.metodo.jugadaX = i;
     //this.state.metodo.jugadaY = j;
-    this.client.validarPOST(this.state.metodo).then(result => this.setState({metodo:result}));    
+    this.client.validarPOST(this.state.juego).then(result => this.setState({juego:result}));    
     
   }
 
@@ -83,9 +87,8 @@ class Dashboard extends Component {
   render() {
 
       
-      if(this.state.metodo.matriz !== undefined){
-
-        console.log("if met.game "+this.state.metodo.juego);
+      if(this.state.juego.matriz !== undefined){
+        console.log("STATE DASHBOARD render: "+JSON.stringify(this.state));
 
         const style = {
        
@@ -109,7 +112,7 @@ class Dashboard extends Component {
 
                 <table style={style}>
                   <tbody>
-                    {this.state.metodo.matriz.map((listaFicha, index) => (
+                    {this.state.juego.matriz.map((listaFicha, index) => (
                     <tr key={index}>
                       
                       {listaFicha.map((ficha, ind)=> (
@@ -132,7 +135,7 @@ class Dashboard extends Component {
               </div>
 
               <div className="col-sm-4 col-md-4">
-                  <Chat usuario={this.props.usuario} chat={this.state.metodo.chat} />
+                  <Chat usuario={this.props.usuario} chat={this.state.juego.chat} />
                 
 
               </div>

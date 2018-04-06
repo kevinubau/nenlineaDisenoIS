@@ -11,13 +11,11 @@ export default class Client{
             request.open("POST", "http://localhost:8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
 
             request.onreadystatechange = () => {
-            
+                
                 var raw =  request.responseText;   
                 console.log("metodoPOST raw: "+raw);
                 var obj = JSON.parse(raw);
 
-                
-            
                 resolve(obj);
                 
             }
@@ -69,7 +67,7 @@ export default class Client{
     }
 
 
-    getJuegos(param){//para llenar la matriz inicial del juego
+    getJuegos(param){//para obtener la lista de juegos disponibles sin aceptar
 
         
         var result = new Promise((resolve, reject) => {
@@ -86,6 +84,68 @@ export default class Client{
 
                 //sdkfj
             
+                resolve(obj);
+                
+            }
+
+            request.send(param);
+        
+        
+        
+        });
+ 
+        return result;
+
+
+    }
+
+
+    acceptGame(param){//para aceptar un juego
+
+        
+        var result = new Promise((resolve, reject) => {
+            
+            var request = new XMLHttpRequest();
+            
+            request.open("POST", "http://localhost:8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
+
+            request.onreadystatechange = () => {
+            
+                var raw =  request.responseText;   
+                console.log("acceptGame raw: "+raw);
+                var obj = JSON.parse(raw);
+
+                resolve(obj);
+                
+            }
+
+            request.send(param);
+        
+        
+        
+        });
+ 
+        return result;
+
+
+    }
+
+
+    verificarAceptar(param){//para verificar si un juego ya ha sido aceptado
+
+        
+        var result = new Promise((resolve, reject) => {
+            
+            var request = new XMLHttpRequest();
+            
+            request.open("POST", "http://localhost:8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
+
+            request.onreadystatechange = () => {
+            
+                var raw =  request.responseText;   
+                console.log("verificar raw: "+raw);
+                var obj = JSON.parse(raw);
+
                 resolve(obj);
                 
             }

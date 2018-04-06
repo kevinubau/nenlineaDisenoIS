@@ -7,14 +7,16 @@ import Client from './Client';
 class SetUp extends Component {
 
     constructor(props) {
+
         super(props);
+
         this.client = new Client();  
         this.state = {metodo:{}, tamTablero: '', cantFichasGana: ''};
 
         this.handleChangeTamTablero = this.handleChangeTamTablero.bind(this);
         this.handleChangeCantFichasGana = this.handleChangeCantFichasGana.bind(this);
-
         this.handleSubmit = this.handleSubmit.bind(this);
+
       }
 
       
@@ -34,7 +36,7 @@ class SetUp extends Component {
       }
     
       handleSubmit(event) {
-        console.log('El tamaño elegido es: ' + this.state.tamTablero);
+  
         event.preventDefault();
   
         var obj = new Object();
@@ -47,15 +49,15 @@ class SetUp extends Component {
         obj.jugadaX = null;
         obj.jugadaY = null;
         obj.gana = null;
-        
+        obj.descrip = "crear";
 
-        var jsonString= JSON.stringify(obj);
-        this.client.metodoPOST(jsonString).then(result => this.setState({metodo:result}));  
-        ReactDOM.render(
-            //<WaitingForPlayer tam={this.state.tamTablero} cantFichasGana={this.state.cantFichasGana} />,
-            //document.getElementById('root')
-            <Dashboard tam={this.state.tamTablero} usuario={this.props.usuario}/>,  document.getElementById('root')
+          ReactDOM.render(
+            <WaitingForPlayer juego={obj} usuario={this.props.usuario}/>,
+            document.getElementById('root')
+            //<Dashboard juego={this.state.metodo} usuario={this.props.usuario}/>,  document.getElementById('root')
           );
+    
+        
           
       }
     
