@@ -17,7 +17,7 @@ class Dashboard extends Component {
     
   }
   tick() {
-    console.log("xxx");
+    
     
     this.setState({secondsElapsed: this.state.secondsElapsed + 1});
     //consultar server por nuevos mensajes
@@ -38,7 +38,7 @@ class Dashboard extends Component {
 
     this.setState({juego: this.props.juego});
     console.log("chat dash "+JSON.stringify(this.state.juego.chat))
-    //this.interval = setInterval(this.tick.bind(this), 250);
+    this.interval = setInterval(this.tick.bind(this), 250);
   }
 
   pintarGane(){
@@ -65,6 +65,7 @@ class Dashboard extends Component {
     var obj = this.state.juego;
     obj.jugadaX = i;
     obj.jugadaY = j;
+    
     this.setState({juego:obj})
     //this.state.metodo.jugadaX = i;
     //this.state.metodo.jugadaY = j;

@@ -17,6 +17,7 @@ class Main extends Component {
 
     redirectToGameSetUp(event){
         event.preventDefault();
+        
         ReactDOM.render(
             <SetUp usuario={this.props.usuario} />,
             document.getElementById('root')

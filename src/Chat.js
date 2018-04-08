@@ -10,52 +10,39 @@ class Chat extends Component{
         this.client = new Client();
         console.log("CONSTRUCTOR CHAT!");
 
-        this.state = { chat:["Bienvenidos!"], message:"", secondsElapsed: 0, juego:{} };
+        this.state = { chat:[], message:"", secondsElapsed: 0};
 
         this.handleChangeChat = this.handleChangeChat.bind(this);
         this.handleChangeInput = this.handleChangeInput.bind(this);
         
         
-        console.log("time: "+this.state.secondsElapsed);
+        
     }
 
      
-
     tick() {
 
-        console.log("chat");
-        
+    
         this.setState({secondsElapsed: this.state.secondsElapsed + 1});
-        //consultar server por nuevos mensajes
-
-        var obj = {};    
-        obj.id = this.props.juego.id;
+        var obj = {};
+        obj.id = this.state.juego.id;
         obj.descrip = "actualizarChat";
-        obj.chat = this.props.juego.chat;
-        this.client.verificarAceptar(JSON.stringify(obj)).then(result => this.setState({juego:result})); 
-        console.log("chat CHAT tick "+JSON.stringify(this.state.juego))
-
-
+        obj.chat = this.state.chat;
+        this.client.verificarAceptar(JSON.stringify(obj)); 
         this.setState({chat: this.props.juego.chat});
-        console.log(JSON.stringify(this.state))
+        
     }
 
-        componentDidMount() {
+    componentDidMount() {
 
-        this.setState({juego: this.props.juego});
-        //console.log("COMPONENT DIDMOUNT!"+JSON.stringify(this.state));
-        console.log("state chat didmount: "+this.state.juego);
-
-        //this.interval = setInterval(this.tick.bind(this), 1000);
-        }
+        //this.setState({juego: this.props.juego});
+        //this.interval = setInterval(this.tick.bind(this), 250);
+    }
 
     componentWillUnmount() {
 
         clearInterval(this.interval);
     }
-
-
-
 
     handleChangeChat(messageGet) {
         
@@ -70,16 +57,13 @@ class Chat extends Component{
         console.log(cars)
     
         this.setState({chat:cars});
-        this.setState({message: ""});
-
-    
-        console.log("chat CHAT "+JSON.stringify(this.props.juego.chat))
-        var obj = {};  
+        this.setState({message: ""});  
+        
+        var obj = {};
         obj.id = this.props.juego.id;
         obj.descrip = "actualizarChat";
-        obj.chat = cars;
-        this.client.verificarAceptar(JSON.stringify(obj)).then(result => this.setState({juego:result})); 
-        console.log("chat CHAT handle "+JSON.stringify(this.props.juego))
+        obj.chat = this.state.chat;
+        this.client.verificarAceptar(JSON.stringify(obj)); 
         this.setState({chat: this.props.juego.chat});
     
       }
@@ -118,7 +102,6 @@ class Chat extends Component{
                 
                     
                         <input className="form-control" name="usermsg" type="text" id="usermsg" size="63" value={this.state.message} onChange={this.handleChangeInput} />
-                            {/*<input name="submitmsg" type="button"  id="submitmsg" value="Send" onClick={() => this.casilla()} />*/}
                         <button className="btn" name="submitmsg" type="button"   id="enviarBtn" onClick={() => this.handleChangeChat(this.state.message)} >Enviar</button>              
                    
                     
@@ -126,22 +109,7 @@ class Chat extends Component{
             </div>
            
         )
-        /*return(
-            <div>
-                    <section id="messages-list">
-                            <ul>
 
-                                {this.state.chat.map((message, index) => (
-
-                                    <p key={index}>{message}</p>
-
-                                ))}
-
-                            </ul>
-                        </section>
-
-            </div>
-        )*/
     }
     
 }
