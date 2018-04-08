@@ -1,5 +1,8 @@
 export default class Client{
-
+    constructor(){
+        this.ip = "192.168.43.115";
+    }
+    
 
     metodoPOST(n){//para llenar la matriz inicial del juego
 
@@ -8,7 +11,7 @@ export default class Client{
             //request.setRequestHeader();
             var request = new XMLHttpRequest();
             //192.168.43.115 wifi claro
-            request.open("POST", "http://localhost:8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
+            request.open("POST", "http://"+this.ip+":8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
 
             request.onloadend = () => {
                 
@@ -42,7 +45,7 @@ export default class Client{
 
             let request = new XMLHttpRequest();
 
-            request.open("POST", "http://localhost:8080/nenlineaBackend/nenlineaBackend");//"http://localhost:8080/mavenproject1/resources/jsonprueba/validar", true);
+            request.open("POST", "http://"+this.ip+":8080/nenlineaBackend/nenlineaBackend");//"http://localhost:8080/mavenproject1/resources/jsonprueba/validar", true);
             
             request.onreadystatechange = () => {
                 
@@ -74,7 +77,7 @@ export default class Client{
             
             var request = new XMLHttpRequest();
             
-            request.open("POST", "http://localhost:8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
+            request.open("POST", "http://"+this.ip+":8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
 
             request.onloadend = () => {
             
@@ -107,7 +110,7 @@ export default class Client{
             
             var request = new XMLHttpRequest();
             
-            request.open("POST", "http://localhost:8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
+            request.open("POST", "http://"+this.ip+":8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
 
             request.onreadystatechange = () => {
             
@@ -138,7 +141,7 @@ export default class Client{
             
             var request = new XMLHttpRequest();
             
-            request.open("POST", "http://localhost:8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
+            request.open("POST", "http://"+this.ip+":8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
 
             request.onreadystatechange = () => {
             
