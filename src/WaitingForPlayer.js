@@ -22,7 +22,7 @@ class WaitingForPlayer extends Component {
       }
 
       tick() {
-        console.log("xxx");
+        
         
         this.setState({secondsElapsed: this.state.secondsElapsed + 1});
         var obj = {};

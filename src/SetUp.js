@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import WaitingForPlayer from './WaitingForPlayer';
 import Client from './Client';
-
+import 'bootstrap/dist/js/bootstrap.js';
+//import 'bootstrap/dist/js/bootstrap.js';
+import Dashboard from './Dashboard';
 class SetUp extends Component {
 
     constructor(props) {
@@ -10,7 +12,7 @@ class SetUp extends Component {
         super(props);
 
         this.client = new Client();  
-        this.state = {metodo:{}, tamTablero: '', cantFichasGana: ''};
+        this.state = {metodo:{}, tamTablero: '', cantFichasGana: '', dificultad:"", tipoJuego:"",juego:{}};
 
         this.handleChangeTamTablero = this.handleChangeTamTablero.bind(this);
         this.handleChangeCantFichasGana = this.handleChangeCantFichasGana.bind(this);
@@ -20,6 +22,7 @@ class SetUp extends Component {
 
       
       signOut() {
+
         this.googleAuth.signOut();
       }
     
@@ -49,18 +52,33 @@ class SetUp extends Component {
         obj.jugadaY = null;
         obj.gana = null;
         obj.descrip = "crear";
-
+        obj.dificultad = this.state.dificultad;
+        obj.tipoJuego = this.state.tipoJuego;
+       
           ReactDOM.render(
             <WaitingForPlayer juego={obj} usuario={this.props.usuario}/>,
             document.getElementById('root')
-            //<Dashboard juego={this.state.metodo} usuario={this.props.usuario}/>,  document.getElementById('root')
           );
     
         
           
       }
+
+      opcionUser(opcion){
+        console.log(opcion);
+        if(opcion!== "usuario"){
+          this.setState({dificultad:opcion, tipoJuego:"PC"});
+        }
+        else{
+          this.setState({dificultad:opcion, tipoJuego:"usuario"});
+        }
+        
+        
+        
+      }
     
       render() {
+        console.log(this.state.dificultad)
         return (
             <div className="container" >
             <br></br>
@@ -77,29 +95,29 @@ class SetUp extends Component {
                   </div>
              
                   <label>
-                Cantidad de fichas para gane:
+                    Cantidad de fichas para gane:
                 
-              </label>
+                  </label>
+
                   <div className="">
                     <input className="form-control" type="number" placeholder="Digite cantidad de fichas en linea para gane" required min="2" value={this.state.cantFichasGana} onChange={this.handleChangeCantFichasGana} />
                   </div>
 
-                  {/*<div class="form-check">  //para elegir color de ficha (aun no funciona)
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
-                    <label class="form-check-label" for="exampleRadios1" >
-                    <img src="./ficha.png"/>
-                      Ficha roja
-                    </label>
+                  <br></br>
+                 
+
+                
+                <div className="dropdown">
+                    <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Seleccione Rival
+                    <span className="caret"></span></button>
+                    <ul className="dropdown-menu">
+                      <li><a onClick={() => this.opcionUser("usuario")}>Usuario</a></li>
+                      <li><a onClick={() => this.opcionUser("pcFacil")}>Computadora Fácil</a></li>
+                      <li><a onClick={() => this.opcionUser("pcIntermedio")}>Computadora Intermedio</a></li>
+                      <li><a onClick={() => this.opcionUser("pcDificil")}>Computadora Difícil</a></li>
+                    </ul>
                   </div>
-
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
-                    <label class="form-check-label" for="exampleRadios1" >
-                    <img src="./ficha2.png"/>
-                      Ficha amarilla
-                    </label>
-        </div>*/}
-
+               
 
             
 
