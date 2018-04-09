@@ -6,7 +6,7 @@ export default class Client{
 
     metodoPOST(n){//para llenar la matriz inicial del juego
 
-        
+    
         var result = new Promise((resolve, reject) => {
             //request.setRequestHeader();
             var request = new XMLHttpRequest();
@@ -47,7 +47,7 @@ export default class Client{
 
             request.open("POST", "http://"+this.ip+":8080/nenlineaBackend/nenlineaBackend");//"http://localhost:8080/mavenproject1/resources/jsonprueba/validar", true);
             
-            request.onreadystatechange = () => {
+            request.onloadend = () => {
                 
                 var raw =  request.response;
                 var obj = JSON.parse(raw);
@@ -146,7 +146,7 @@ export default class Client{
             request.onreadystatechange = () => {
             
                 var raw =  request.responseText;   
-                console.log("verificar raw: "+raw);
+                //console.log("verificar raw: "+raw);
                 var obj = JSON.parse(raw);
 
                 resolve(obj);

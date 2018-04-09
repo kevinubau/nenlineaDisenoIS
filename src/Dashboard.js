@@ -12,8 +12,8 @@ class Dashboard extends Component {
     this.client = new Client();
    
 
-    console.log("PROPS DASHBOARD: "+JSON.stringify(this.props.juego));
-    console.log("STATE DASHBOARD: "+JSON.stringify(this.state.juego));
+    //console.log("PROPS DASHBOARD: "+JSON.stringify(this.props.juego));
+    //console.log("STATE DASHBOARD: "+JSON.stringify(this.state.juego));
     
   }
   tick() {
@@ -38,7 +38,7 @@ class Dashboard extends Component {
   componentDidMount() {
 
     this.setState({juego: this.props.juego});
-    console.log("chat dash "+JSON.stringify(this.state.juego.chat))
+    //console.log("chat dash "+JSON.stringify(this.state.juego.chat))
     this.interval = setInterval(this.tick.bind(this), 250);
   }
 
@@ -62,7 +62,10 @@ class Dashboard extends Component {
   }
 
   casilla(i, j){
-    if(this.state.juego.jugador1 === this.props.usuario.name && this.state.juego.turno === 1){
+    console.log(this.state.juego.jugador1);
+    console.log(this.props.usuario.name);
+    console.log(this.state.juego.turno);
+    if(this.state.juego.jugador1 === this.props.usuario.name && this.state.juego.turno === 2){
       console.log("TURNO JUGADOR 1");
 
       var obj = this.state.juego;
@@ -74,7 +77,7 @@ class Dashboard extends Component {
       //this.state.metodo.jugadaY = j;
       this.client.validarPOST(this.state.juego).then(result => this.setState({juego:result})); 
     }
-    else if(this.state.juego.jugador2 === this.props.usuario.name && this.state.juego.turno === 2){
+    else if(this.state.juego.jugador2 === this.props.usuario.name && this.state.juego.turno === 1){
       console.log("TURNO JUGADOR 2");
     var obj = this.state.juego;
     obj.jugadaX = i;
@@ -124,7 +127,7 @@ class Dashboard extends Component {
 
       
       if(this.state.juego.matriz !== undefined){
-        console.log("STATE DASHBOARD render: "+JSON.stringify(this.state));
+        //console.log("STATE DASHBOARD render: "+JSON.stringify(this.state));
 
         const style = {
        
