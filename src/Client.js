@@ -1,6 +1,6 @@
 export default class Client{
     constructor(){
-        this.ip = "192.168.43.115";//"192.168.43.115";
+        this.ip = "localhost";//"192.168.43.115";
     }
     
 
@@ -112,7 +112,7 @@ export default class Client{
             
             request.open("POST", "http://"+this.ip+":8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
 
-            request.onreadystatechange = () => {
+            request.onloadend = () => {
             
                 var raw =  request.responseText;   
                 console.log("acceptGame raw: "+raw);
@@ -143,7 +143,7 @@ export default class Client{
             
             request.open("POST", "http://"+this.ip+":8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
 
-            request.onreadystatechange = () => {
+            request.onloadend = () => {
             
                 var raw =  request.responseText;   
                 //console.log("verificar raw: "+raw);

@@ -4,7 +4,7 @@ import WaitingForPlayer from './WaitingForPlayer';
 import Client from './Client';
 import 'bootstrap/dist/js/bootstrap.js';
 //import 'bootstrap/dist/js/bootstrap.js';
-import Dashboard from './Dashboard';
+//import Dashboard from './Dashboard';
 class SetUp extends Component {
 
     constructor(props) {

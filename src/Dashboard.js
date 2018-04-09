@@ -63,15 +63,15 @@ class Dashboard extends Component {
 
   casilla(i, j){
 
-    console.log(this.state.juego.jugador1);
-    console.log(this.state.juego.jugador2);
-    console.log(this.props.usuario.name);
-    console.log(this.state.juego.turno);
-
-    if(this.state.juego.jugador1 == this.props.usuario.name && this.state.juego.turno == 1){
+    console.log(typeof(this.state.juego.jugador1));
+    console.log(typeof(this.state.juego.jugador2));
+    console.log(typeof(this.props.usuario.name));
+    console.log(typeof(this.state.juego.turno));
+    var obj = {};
+    if(this.state.juego.jugador1 === this.props.usuario.name && this.state.juego.turno === 1){
       console.log("TURNO JUGADOR 1");
 
-      var obj = this.state.juego;
+       obj = this.state.juego;
       obj.jugadaX = i;
       obj.jugadaY = j;
       
@@ -81,9 +81,10 @@ class Dashboard extends Component {
       this.client.validarPOST(this.state.juego).then(result => this.setState({juego:result})); 
     }
     
-    else if(this.state.juego.jugador2 == this.props.usuario.name && this.state.juego.turno == 2){
+    else if(this.state.juego.jugador2 === this.props.usuario.name && this.state.juego.turno === 2){
       console.log("TURNO JUGADOR 2"); 
-      var obj = this.state.juego;
+      
+       obj = this.state.juego;
       obj.jugadaX = i;
       obj.jugadaY = j;
     
