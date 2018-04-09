@@ -12,7 +12,7 @@ class SetUp extends Component {
         super(props);
 
         this.client = new Client();  
-        this.state = {metodo:{}, tamTablero: '', cantFichasGana: '', dificultad:"", tipoJuego:"",juego:{}};
+        this.state = {metodo:{}, tamTablero: '', cantFichasGana: '', dificultad:"Elija rival", tipoJuego:"",juego:{}};
 
         this.handleChangeTamTablero = this.handleChangeTamTablero.bind(this);
         this.handleChangeCantFichasGana = this.handleChangeCantFichasGana.bind(this);
@@ -108,7 +108,7 @@ class SetUp extends Component {
 
                 
                 <div className="dropdown">
-                    <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Seleccione Rival
+                    <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.dificultad}
                     <span className="caret"></span></button>
                     <ul className="dropdown-menu">
                       <li><a onClick={() => this.opcionUser("usuario")}>Usuario</a></li>

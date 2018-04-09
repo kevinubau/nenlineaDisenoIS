@@ -9,7 +9,7 @@ class PartidasDisponibles extends Component{
         super(props);
     
         this.client = new Client();    
-        this.state = {juegos:null, game: "", juego:{}};
+        this.state = {juegos:[], game: "", juego:{}};
 
         
         this.client.getJuegos("listaJuegos").then(result => this.setState({juegos:result}));    
@@ -76,7 +76,7 @@ class PartidasDisponibles extends Component{
                 </div>
        
                 {console.log("JUEGOS: "+this.state.juegos)}
-                {this.state.juegos ? (
+                {this.state.juegos.length>0? (
 
                                         this.state.juegos.map((juego, index)=> (
 
