@@ -1,6 +1,6 @@
 export default class Client{
     constructor(){
-        this.ip = "localhost";//"192.168.43.115";
+        this.ip = "192.168.43.115";//"192.168.43.115";
     }
     
 
