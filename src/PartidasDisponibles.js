@@ -7,10 +7,10 @@ class PartidasDisponibles extends Component{
 
     constructor(props){
         super(props);
-    
+        
         this.client = new Client();    
         this.state = {juegos:[], game: "", juego:{}};
-
+            
         
         this.client.getJuegos("listaJuegos").then(result => this.setState({juegos:result}));    
         console.log("constructor partidas disponibles...");
@@ -24,9 +24,8 @@ class PartidasDisponibles extends Component{
 
      componentDidMount() {
        
-       
-
-       //this.interval = setInterval(this.tick.bind(this), 2000);
+    
+       this.interval = setInterval(this.tick.bind(this), 2000);
      }
 
      componentWillUnmount() {
@@ -46,7 +45,7 @@ class PartidasDisponibles extends Component{
         
         if(this.state.juego.matriz){
 
-            //this.goToDash(obj);
+            
         }
         
     }
@@ -78,20 +77,23 @@ class PartidasDisponibles extends Component{
                 {console.log("JUEGOS: "+this.state.juegos)}
                 {this.state.juegos.length>0? (
 
-                                        this.state.juegos.map((juego, index)=> (
+                    this.state.juegos.map((juego, index)=> (
 
-                                            <div key={juego.id} className="box">
-                                                <span className="badge">Tamaño: {juego.tam}</span><span className="badge">Jugador: {juego.jugador1}</span><br/>
-                                                <button onClick={() => this.handleAccept(juego.id)} key={index} id={juego.id} className="btn" >Aceptar</button>
-                                                <hr></hr>
-                                            </div>
-                                            
-                                        ))
-                    ) : (
-                    <div>
-                        <p>NO HAY PARTIDAS DISPONIBLES</p>
+                        <div key={juego.id} className="box">
+                            <span className="badge">Tamaño: {juego.tam}</span><span className="badge">Jugador: {juego.jugador1}</span><br/>
+                            <button onClick={() => this.handleAccept(juego.id)} key={index} id={juego.id} className="btn" >Aceptar</button>
+                            <hr></hr>
+                        </div>
                         
-                    </div>
+                    ))
+
+
+                    ) : (
+
+                        <div>
+                            <p>NO HAY PARTIDAS DISPONIBLES</p>
+                            
+                        </div>
                     )}
                     
 

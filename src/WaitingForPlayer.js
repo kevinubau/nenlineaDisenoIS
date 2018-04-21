@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-//import 'bootstrap/dist/css/bootstrap.css';
-//import { BrowserRouter, Route, Router, Link } from 'react-router-dom'
-import ReactDOM from 'react-dom';
 import Dashboard from './Dashboard';
 import './css/waitingForPlayer.css';
 import Client from './Client';
@@ -11,14 +8,13 @@ class WaitingForPlayer extends Component {
 
     constructor(props){
         super(props);
-    
+        
         this.client = new Client();  
 
         this.state = {juego:{}, secondsElapsed:0};
-
+             
         this.client.metodoPOST(JSON.stringify(this.props.juego)).then(result => this.setState({juego:result}));  
-        
-        
+                
       }
 
       tick() {
@@ -37,32 +33,33 @@ class WaitingForPlayer extends Component {
 
      componentDidMount() {
        
-       console.log(JSON.stringify(this.state))
-
+       console.log(JSON.stringify(this.state))                
        this.interval = setInterval(this.tick.bind(this), 500);
+
      }
 
      componentWillUnmount() {
          
        clearInterval(this.interval);
+
      }
 
 
     
 
     render() {
-        if(this.state.juego.jugador2){
-            console.log("PROPS WAITINGFORPLAYERS: "+JSON.stringify(this.state.juego.jugador2));
-            ReactDOM.render(
-               
-                <Dashboard juego={this.state.juego} usuario={this.props.usuario}/>,  document.getElementById('root')
-              );
-
-        }
+       
         
         return (
             <div className="container" align="center">
+                {this.state.juego.jugador2?(
 
+                    <Dashboard juego={this.state.juego} usuario={this.props.usuario}/>
+
+                ):(
+                
+                
+                
                 <div className="row align-items-center">
 
                     <div className="col">
@@ -78,6 +75,7 @@ class WaitingForPlayer extends Component {
                     
                 </div>
                 
+                )} 
 
             </div>
 

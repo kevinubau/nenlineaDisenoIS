@@ -10,11 +10,7 @@ class Dashboard extends Component {
 
     this.state = {juego:{}}
     this.client = new Client();
-   
-
-    //console.log("PROPS DASHBOARD: "+JSON.stringify(this.props.juego));
-    //console.log("STATE DASHBOARD: "+JSON.stringify(this.state.juego));
-    
+ 
   }
   tick() {
     
@@ -38,7 +34,6 @@ class Dashboard extends Component {
   componentDidMount() {
 
     this.setState({juego: this.props.juego});
-    //console.log("chat dash "+JSON.stringify(this.state.juego.chat))
     this.interval = setInterval(this.tick.bind(this), 250);
   }
 
@@ -71,13 +66,12 @@ class Dashboard extends Component {
     if(this.state.juego.jugador1 === this.props.usuario.name && this.state.juego.turno === 1){
       console.log("TURNO JUGADOR 1");
 
-       obj = this.state.juego;
+      obj = this.state.juego;
       obj.jugadaX = i;
       obj.jugadaY = j;
       
       this.setState({juego:obj})
-      //this.state.metodo.jugadaX = i;
-      //this.state.metodo.jugadaY = j;
+ 
       this.client.validarPOST(this.state.juego).then(result => this.setState({juego:result})); 
     }
     
@@ -89,8 +83,7 @@ class Dashboard extends Component {
       obj.jugadaY = j;
     
     this.setState({juego:obj})
-    //this.state.metodo.jugadaX = i;
-    //this.state.metodo.jugadaY = j;
+  
     this.client.validarPOST(this.state.juego).then(result => this.setState({juego:result}));
 
     }
@@ -133,7 +126,6 @@ class Dashboard extends Component {
 
       
       if(this.state.juego.matriz !== undefined){
-        //console.log("STATE DASHBOARD render: "+JSON.stringify(this.state));
 
         const style = {
        

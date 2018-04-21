@@ -11,11 +11,13 @@ class Main extends Component {
         
         this.redirectToGameSetUp = this.redirectToGameSetUp.bind(this);
     }
+    
     signOut() {
         this.googleAuth.signOut();
     }
 
     redirectToGameSetUp(event){
+        
         event.preventDefault();
         
         ReactDOM.render(
@@ -71,7 +73,7 @@ class Main extends Component {
 
                     
 
-                    <div style={divStyle} className="col-sm-6 col-md-8">
+                    <div style={divStyle} className="col-sm-4 col-md-4 col-lg-6">
                         <PartidasDisponibles usuario={this.props.usuario}/>
                     </div>
 

@@ -1,0 +1,8 @@
+codificacion de caracteres
+hacer que el juego ya no sea posible aceptarlo si ya ha sido aceptado antes
+
+
+
+APUNTES CODIGO	
+response.setContentType("text/plain; charset=utf-8");
+request.setCharacterEncoding("UTF-8");

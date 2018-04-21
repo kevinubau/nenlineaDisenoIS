@@ -66,6 +66,7 @@ class SetUp extends Component {
 
       opcionUser(opcion){
         console.log(opcion);
+        
         if(opcion!== "usuario"){
           this.setState({dificultad:opcion, tipoJuego:"PC"});
         }

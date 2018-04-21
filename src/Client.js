@@ -1,22 +1,28 @@
 export default class Client{
+
     constructor(){
-        this.ip = "192.168.43.115";//"192.168.43.115";
+        this.ip = "localhost";//"192.168.43.115";
     }
     
 
     metodoPOST(n){//para llenar la matriz inicial del juego
 
-    
+        console.log("Metodo Post Request: "+n);
         var result = new Promise((resolve, reject) => {
-            //request.setRequestHeader();
-            var request = new XMLHttpRequest();
-            //192.168.43.115 wifi claro
-            request.open("POST", "http://"+this.ip+":8080/nenlineaBackend/nenlineaBackend");//http://localhost:8080/mavenproject1/resources/jsonprueba/jsonpost");
 
+
+            var request = new XMLHttpRequest();
+            
+            //var contentType = "application/json; charset=UTF-8";
+
+            //request.setRequestHeader('Content-type', contentType);
+
+            //192.168.43.115 wifi claro
+            request.open("POST", "http://"+this.ip+":8080/nenlineaBackend/nenlineaBackend");
             request.onloadend = () => {
                 
                 var raw =  request.responseText;   
-                console.log("metodoPOST raw: "+raw);
+                console.log("metodoPOST response: "+raw);
                 var obj = JSON.parse(raw);
 
                 resolve(obj);
@@ -83,9 +89,7 @@ export default class Client{
             
                 var raw =  request.responseText;   
                 console.log("getJuegos raw: "+raw);
-                var obj = JSON.parse(raw);
-
-                //sdkfj
+                var obj = JSON.parse(raw);              
             
                 resolve(obj);
                 
@@ -136,7 +140,7 @@ export default class Client{
 
     verificarAceptar(param){//para verificar si un juego ya ha sido aceptado
 
-        
+        //alert("verificar aceptar "+param);
         var result = new Promise((resolve, reject) => {
             
             var request = new XMLHttpRequest();
