@@ -43,10 +43,7 @@ class PartidasDisponibles extends Component{
 
         this.client.acceptGame(JSON.stringify(obj)).then(result => this.setState({juego:result}));  
         
-        if(this.state.juego.matriz){
-
-            
-        }
+       
         
     }
 

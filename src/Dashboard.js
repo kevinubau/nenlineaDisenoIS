@@ -58,13 +58,13 @@ class Dashboard extends Component {
 
   casilla(i, j){
 
-    console.log(typeof(this.state.juego.jugador1));
-    console.log(typeof(this.state.juego.jugador2));
-    console.log(typeof(this.props.usuario.name));
-    console.log(typeof(this.state.juego.turno));
+    //console.log(typeof(this.state.juego.jugador1));
+    //console.log(typeof(this.state.juego.jugador2));
+    //console.log(typeof(this.props.usuario.name));
+    //console.log(typeof(this.state.juego.turno));
     var obj = {};
     if(this.state.juego.jugador1 === this.props.usuario.name && this.state.juego.turno === 1){
-      console.log("TURNO JUGADOR 1");
+      //console.log("TURNO JUGADOR 1");
 
       obj = this.state.juego;
       obj.jugadaX = i;
@@ -76,15 +76,15 @@ class Dashboard extends Component {
     }
     
     else if(this.state.juego.jugador2 === this.props.usuario.name && this.state.juego.turno === 2){
-      console.log("TURNO JUGADOR 2"); 
-      
-       obj = this.state.juego;
+      //console.log("TURNO JUGADOR 2"); 
+        
+      obj = this.state.juego;
       obj.jugadaX = i;
       obj.jugadaY = j;
+      
+      this.setState({juego:obj})
     
-    this.setState({juego:obj})
-  
-    this.client.validarPOST(this.state.juego).then(result => this.setState({juego:result}));
+      this.client.validarPOST(this.state.juego).then(result => this.setState({juego:result}));
 
     }
    
@@ -95,6 +95,7 @@ class Dashboard extends Component {
 
 
   setImageNinLine(wich){ 
+    
     if(wich===0){
 
       return "./casilla.png";

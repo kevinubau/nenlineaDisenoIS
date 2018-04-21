@@ -1,6 +1,6 @@
 codificacion de caracteres
 hacer que el juego ya no sea posible aceptarlo si ya ha sido aceptado antes
-
+no funciona lo de partidas disponibles porque se intento hacaer el punto anterior!
 
 
 APUNTES CODIGO	

@@ -28,12 +28,12 @@ class WaitingForPlayer extends Component {
        
 
         this.client.verificarAceptar(JSON.stringify(obj)).then(result => this.setState({juego:result}));  
-        console.log(JSON.stringify(this.state))
+       
      }
 
      componentDidMount() {
        
-       console.log(JSON.stringify(this.state))                
+               
        this.interval = setInterval(this.tick.bind(this), 500);
 
      }

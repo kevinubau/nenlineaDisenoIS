@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import WaitingForPlayer from './WaitingForPlayer';
 import Client from './Client';
 import 'bootstrap/dist/js/bootstrap.js';
-//import 'bootstrap/dist/js/bootstrap.js';
-//import Dashboard from './Dashboard';
+
 class SetUp extends Component {
 
     constructor(props) {
@@ -82,51 +81,51 @@ class SetUp extends Component {
         console.log(this.state.dificultad)
         return (
             <div className="container" >
-            <br></br>
-            <h2>Configuración del juego</h2>
-            <hr></hr>
-            <form onSubmit={this.handleSubmit}>
-             
-                <div className="">
-                <label>
-                Tamaño de tablero:
-              </label>
+              <br></br>
+              <h2>Configuración del juego</h2>
+              <hr></hr>
+              <form onSubmit={this.handleSubmit}>
+              
                   <div className="">
-                    <input name="tama" className="form-control" type="number" placeholder="Digite tamaño" required min="1" value={this.state.tamTablero} onChange={this.handleChangeTamTablero} />
-                  </div>
-             
                   <label>
-                    Cantidad de fichas para gane:
+                  Tamaño de tablero:
+                </label>
+                    <div className="">
+                      <input name="tama" className="form-control" type="number" placeholder="Digite tamaño" required min="1" value={this.state.tamTablero} onChange={this.handleChangeTamTablero} />
+                    </div>
+              
+                    <label>
+                      Cantidad de fichas para gane:
+                  
+                    </label>
+
+                    <div className="">
+                      <input className="form-control" type="number" placeholder="Digite cantidad de fichas en linea para gane" required min="2" value={this.state.cantFichasGana} onChange={this.handleChangeCantFichasGana} />
+                    </div>
+
+                    <br></br>
+                  
+
+                  
+                  <div className="dropdown">
+                      <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.dificultad}
+                      <span className="caret"></span></button>
+                      <ul className="dropdown-menu">
+                        <li><a onClick={() => this.opcionUser("usuario")}>Usuario</a></li>
+                        <li><a onClick={() => this.opcionUser("pcFacil")}>Computadora Fácil</a></li>
+                        <li><a onClick={() => this.opcionUser("pcIntermedio")}>Computadora Intermedio</a></li>
+                        <li><a onClick={() => this.opcionUser("pcDificil")}>Computadora Difícil</a></li>
+                      </ul>
+                    </div>
                 
-                  </label>
 
-                  <div className="">
-                    <input className="form-control" type="number" placeholder="Digite cantidad de fichas en linea para gane" required min="2" value={this.state.cantFichasGana} onChange={this.handleChangeCantFichasGana} />
-                  </div>
+              
 
-                  <br></br>
-                 
-
-                
-                <div className="dropdown">
-                    <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{this.state.dificultad}
-                    <span className="caret"></span></button>
-                    <ul className="dropdown-menu">
-                      <li><a onClick={() => this.opcionUser("usuario")}>Usuario</a></li>
-                      <li><a onClick={() => this.opcionUser("pcFacil")}>Computadora Fácil</a></li>
-                      <li><a onClick={() => this.opcionUser("pcIntermedio")}>Computadora Intermedio</a></li>
-                      <li><a onClick={() => this.opcionUser("pcDificil")}>Computadora Difícil</a></li>
-                    </ul>
-                  </div>
-               
-
+                    <br></br>
+                    <input  className="btn"  type="submit" value="OK" />
+                </div>
+              </form>
             
-
-                  <br></br>
-                  <input  className="btn"  type="submit" value="OK" />
-              </div>
-            </form>
-          
             </div>
           
         );

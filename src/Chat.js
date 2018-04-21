@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './css/Chat.css';
 import Client from './Client';
+
 class Chat extends Component{
 
     constructor(props){
@@ -8,7 +9,7 @@ class Chat extends Component{
         super(props);
 
         this.client = new Client();
-        console.log("CONSTRUCTOR CHAT!");
+        
 
         this.state = { chat:[], message:"", secondsElapsed: 0};
 
@@ -50,12 +51,8 @@ class Chat extends Component{
         messageGet = this.props.usuario.name+": "+messageGet;
         this.setState({message: messageGet});
 
-        console.log("final state of message: "+this.state.message)
-
         cars.push(messageGet)
-        
-        console.log(cars)
-    
+
         this.setState({chat:cars});
         this.setState({message: ""});  
         
@@ -63,6 +60,7 @@ class Chat extends Component{
         obj.id = this.props.juego.id;
         obj.descrip = "actualizarChat";
         obj.chat = this.state.chat;
+
         this.client.verificarAceptar(JSON.stringify(obj)); 
         this.setState({chat: this.props.juego.chat});
     
@@ -70,9 +68,9 @@ class Chat extends Component{
 
       handleChangeInput(event) {
         
-        console.log("before setting message: "+event.target.value);
+        //console.log("before setting message: "+event.target.value);
         this.setState({message: event.target.value});
-        console.log("after setting message: "+this.state.message);
+        //console.log("after setting message: "+this.state.message);
 
       }
 

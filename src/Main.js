@@ -43,7 +43,7 @@ class Main extends Component {
                 <br/>
                 <div className="row ">
                     
-                    {console.log(this.props.usuario)}
+                   
 
                     <div className="col-sm-6 col-md-4 ">
 
@@ -63,7 +63,7 @@ class Main extends Component {
 
                         </table>
                         
-  
+                        <hr/>
 
                         <form onSubmit={this.redirectToGameSetUp}>
                             <input className="btn btn-secondary btn-lg" type="submit" value="Iniciar un Juego Nuevo" onClick={this.redirectToGameSetUp} />

@@ -13,11 +13,7 @@ export default class Client{
 
             var request = new XMLHttpRequest();
             
-            //var contentType = "application/json; charset=UTF-8";
-
-            //request.setRequestHeader('Content-type', contentType);
-
-            //192.168.43.115 wifi claro
+           
             request.open("POST", "http://"+this.ip+":8080/nenlineaBackend/nenlineaBackend");
             request.onloadend = () => {
                 
@@ -46,7 +42,7 @@ export default class Client{
     validarPOST(objeto){//para el clic
 
         
-        console.log("enviando.. "+JSON.stringify(objeto));
+        //console.log("enviando.. "+JSON.stringify(objeto));
         let result = new Promise((resolve, reject) => {
 
             let request = new XMLHttpRequest();
@@ -58,7 +54,7 @@ export default class Client{
                 var raw =  request.response;
                 var obj = JSON.parse(raw);
 
-                console.log("recibe... "+raw);
+                //console.log("recibe... "+raw);
                 
                 resolve(obj);
                 
@@ -87,10 +83,13 @@ export default class Client{
 
             request.onloadend = () => {
             
-                var raw =  request.responseText;   
-                console.log("getJuegos raw: "+raw);
-                var obj = JSON.parse(raw);              
-            
+                var raw =  request.responseText;  
+                
+                //console.log("getJuegos raw: "+raw);
+                
+                var obj = JSON.parse(raw); 
+                            
+                
                 resolve(obj);
                 
             }
@@ -119,7 +118,7 @@ export default class Client{
             request.onloadend = () => {
             
                 var raw =  request.responseText;   
-                console.log("acceptGame raw: "+raw);
+                //console.log("acceptGame raw: "+raw);
                 var obj = JSON.parse(raw);
 
                 resolve(obj);
