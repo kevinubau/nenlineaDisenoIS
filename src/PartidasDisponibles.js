@@ -13,7 +13,7 @@ class PartidasDisponibles extends Component{
             
         
         this.client.getJuegos("listaJuegos").then(result => this.setState({juegos:result}));    
-        console.log("constructor partidas disponibles...");
+        
         
         
       }

@@ -53,6 +53,7 @@ class SetUp extends Component {
         obj.descrip = "crear";
         obj.dificultad = this.state.dificultad;
         obj.tipoJuego = this.state.tipoJuego;
+        obj.cantFichasParaGanar = this.state.cantFichasGana;
        
           ReactDOM.render(
             <WaitingForPlayer juego={obj} usuario={this.props.usuario}/>,
