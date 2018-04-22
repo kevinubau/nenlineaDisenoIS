@@ -4,7 +4,7 @@ export default class Client{
         this.ip = "172.24.67.53";//"192.168.43.115";
     }
     
-
+    console.log("IP: "+this.ip);
     metodoPOST(n){//para llenar la matriz inicial del juego
 
         console.log("Metodo Post Request: "+n);
@@ -13,7 +13,7 @@ export default class Client{
 
             var request = new XMLHttpRequest();
             
-            console.log("IP: "+this.ip);
+            
             request.open("POST", "http://"+this.ip+":8080/nenlineaBackend/nenlineaBackend");
             request.onloadend = () => {
                 
