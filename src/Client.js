@@ -2,9 +2,10 @@ export default class Client{
 
     constructor(){
         this.ip = "172.24.67.53";//"192.168.43.115";
+        console.log("IP: "+this.ip);
     }
     
-    console.log("IP: "+this.ip);
+    
     metodoPOST(n){//para llenar la matriz inicial del juego
 
         console.log("Metodo Post Request: "+n);

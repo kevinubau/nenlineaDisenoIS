@@ -146,7 +146,7 @@ class Dashboard extends Component {
                      
             <div className="row">
               <div className="col-sm-8 col-md-8" style={divStyle}>
-                <h1>Dashboard</h1>
+                <h1>N en línea</h1>
 
                 <table style={style}>
 

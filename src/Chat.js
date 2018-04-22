@@ -15,7 +15,7 @@ class Chat extends Component{
 
         this.handleChangeChat = this.handleChangeChat.bind(this);
         this.handleChangeInput = this.handleChangeInput.bind(this);
-        
+        this.handleSubmit = this.handleSubmit.bind(this);
         
         
     }
@@ -45,8 +45,14 @@ class Chat extends Component{
         clearInterval(this.interval);
     }
 
-    handleChangeChat(messageGet) {
-        
+    handleSubmit(event) {
+        //alert('A name was submitted: ' + event.value);
+        //this.handleChangeChat;
+        event.preventDefault();
+      }
+
+    handleChangeChat() {
+        var messageGet = this.state.message;
         var cars = this.state.chat;
         messageGet = this.props.usuario.name+": "+messageGet;
         this.setState({message: messageGet});
@@ -63,7 +69,7 @@ class Chat extends Component{
 
         this.client.verificarAceptar(JSON.stringify(obj)); 
         this.setState({chat: this.props.juego.chat});
-    
+        
       }
 
       handleChangeInput(event) {
@@ -73,6 +79,8 @@ class Chat extends Component{
         //console.log("after setting message: "+this.state.message);
 
       }
+
+     
 
 
     render(){
@@ -87,21 +95,33 @@ class Chat extends Component{
                     <div id="chatbox">
                         <section id="messages-list">
                            
-
+                        
                                 {this.props.juego.chat.map((message, index) => (
-
-                                   <div key={index}> {message}</div>
+                                    index===0?(
+                                        <div key={index}> 
+                                        
+                                        <div> {message}</div>
+                                        
+                                        </div>
+                                    ):
+                                    (
+                                        <div key={index}> 
+                                   
+                                        <div>{/*<img src={this.props.usuario.imageUrl} className="rounded" alt="Cinque Terre" width="50" height="50"/>*/} {message}</div>
+                                        
+                                        </div>
+                                    )
 
                                 ))}
 
-                           
+                       
                         </section>
                     </div>
                 
-                    
+                    <form onSubmit={this.handleSubmit}>
                         <input className="form-control" name="usermsg" type="text" id="usermsg" size="63" value={this.state.message} onChange={this.handleChangeInput} />
-                        <button className="btn" name="submitmsg" type="button"   id="enviarBtn" onClick={() => this.handleChangeChat(this.state.message)} >Enviar</button>              
-                   
+                        <button className="btn" name="submitmsg" type="submit"   id="enviarBtn" onClick={this.handleChangeChat} >Enviar</button>              
+                    </form>  
                     
                 </div>
             </div>

@@ -65,13 +65,13 @@ class PartidasDisponibles extends Component{
         }
 
         return(
-            <div>
+            <div className='container'>
 
                 <div>
                     <h4><kbd>Partidas Disponibles:</kbd></h4>
                 </div>
        
-                {console.log("JUEGOS: "+this.state.juegos)}
+                
                 {this.state.juegos.length>0? (
 
                     this.state.juegos.map((juego, index)=> (

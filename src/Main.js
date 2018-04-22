@@ -27,15 +27,12 @@ class Main extends Component {
         
         
     }
-    divStyle = {
-        border: '1px solid',
-        
-      };
+   
       
     render() {
         const divStyle={
-            overflowY: 'scroll'
-         
+            overflowY: 'scroll',
+            height: '200px'
           }
         return (
             
@@ -45,7 +42,7 @@ class Main extends Component {
                     
                    
 
-                    <div className="col-sm-6 col-md-4 ">
+                    <div className="col-sm-6 col-md-6 col-lg-6">
 
                         <table className="table ">
                             <tbody>
@@ -73,7 +70,7 @@ class Main extends Component {
 
                     
 
-                    <div style={divStyle} className="col-sm-4 col-md-4 col-lg-6">
+                    <div style={divStyle} className="col-sm-6 col-md-6 col-lg-6">
                         <PartidasDisponibles usuario={this.props.usuario}/>
                     </div>
 
