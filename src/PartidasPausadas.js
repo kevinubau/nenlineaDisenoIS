@@ -3,29 +3,28 @@ import React, { Component } from 'react';
 import Client from './Client';
 import Dashboard from './Dashboard';
 
-class PartidasDisponibles extends Component{
+class PartidasPausadas extends Component{
 
     constructor(props){
         super(props);
         
         this.client = new Client();    
-        this.state = {juegos:[], game: "", juego:{}};
-            
-        
-        this.client.getJuegos("listaJuegos").then(result => this.setState({juegos:result}));    
-        
-        
-        
+        this.state = {juegos:[], game: "", juego:{}};  
+        var obj = {};
+        obj.descrip = "juegosPausados";
+        obj.jugador1 = this.props.usuario.name;
+        this.client.getJuegos(JSON.stringify(obj)).then(result => this.setState({juegos:result}));    
+
       }
 
       tick() {
-        this.client.getJuegos("listaJuegos").then(result => this.setState({juegos:result}));  
+        this.client.getJuegos(JSON.stringify(this.obj)).then(result => this.setState({juegos:result}));  
      }
 
-     componentDidMount() {
+    componentDidMount() {
        
     
-       this.interval = setInterval(this.tick.bind(this), 2000);
+       //this.interval = setInterval(this.tick.bind(this), 2000);
      }
 
      componentWillUnmount() {
@@ -38,21 +37,16 @@ class PartidasDisponibles extends Component{
         var obj = {};
 
         obj.id = game;
-        obj.descrip = "aceptar";
-        obj.jugador2 = this.props.usuario.name;
+        obj.descrip = "reanudar";
+        obj.jugador1 = this.props.usuario.name;
 
         this.client.acceptGame(JSON.stringify(obj)).then(result => this.setState({juego:result}));  
-         
+        
+        
+        
     }
 
-    goToDash(obj){
-
-        this.client.acceptGame(JSON.stringify(obj)).then(result => this.setState({juego:result}));  
-        ReactDOM.render(
-
-            <Dashboard juego={this.state.juego} usuario={this.props.usuario}/>,  document.getElementById('root')
-          );
-    }
+    
 
     render(){
         if(this.state.juego.matriz){
@@ -66,7 +60,7 @@ class PartidasDisponibles extends Component{
             <div className='container'>
 
                 <div>
-                    <h4><kbd>Partidas Disponibles:</kbd></h4>
+                    <h4><kbd>Partidas Pausadas:</kbd></h4>
                 </div>
        
                 
@@ -76,7 +70,7 @@ class PartidasDisponibles extends Component{
 
                         <div key={juego.id} className="box">
                             <span className="badge">Tamaño: {juego.tam}</span><span className="badge">Jugador: {juego.jugador1}</span><br/>
-                            <button onClick={() => this.handleAccept(juego.id)} key={index} id={juego.id} className="btn" >Aceptar</button>
+                            <button onClick={() => this.handleAccept(juego.id)} key={index} id={juego.id} className="btn" >Reanudar</button>
                             <hr></hr>
                         </div>
                         
@@ -86,7 +80,7 @@ class PartidasDisponibles extends Component{
                     ) : (
 
                         <div>
-                            <p>NO HAY PARTIDAS DISPONIBLES</p>
+                            <p>NO HAY PARTIDAS PAUSADAS</p>
                             
                         </div>
                     )}
@@ -98,4 +92,4 @@ class PartidasDisponibles extends Component{
     }
 
 }
-export default PartidasDisponibles;
+export default PartidasPausadas;

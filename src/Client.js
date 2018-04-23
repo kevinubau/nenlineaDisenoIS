@@ -7,7 +7,7 @@ export default class Client{
     
     
     metodoPOST(n){//para llenar la matriz inicial del juego
-
+        
         console.log("Metodo Post Request: "+n);
         var result = new Promise((resolve, reject) => {
 
@@ -43,7 +43,7 @@ export default class Client{
     validarPOST(objeto){//para el clic
 
         
-        //console.log("enviando.. "+JSON.stringify(objeto));
+        console.log("enviando.. "+JSON.stringify(objeto));
         let result = new Promise((resolve, reject) => {
 
             let request = new XMLHttpRequest();
@@ -75,7 +75,7 @@ export default class Client{
 
     getJuegos(param){//para obtener la lista de juegos disponibles sin aceptar
 
-        
+        console.log("getJuegos raw: "+param);
         var result = new Promise((resolve, reject) => {
             
             var request = new XMLHttpRequest();
@@ -86,10 +86,10 @@ export default class Client{
             
                 var raw =  request.responseText;  
                 
-                //console.log("getJuegos raw: "+raw);
+                
                 
                 var obj = JSON.parse(raw); 
-                            
+                console.log("Response: "+raw);           
                 
                 resolve(obj);
                 

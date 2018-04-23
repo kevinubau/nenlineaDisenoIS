@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import SetUp from './SetUp';
 import PartidasDisponibles from './PartidasDisponibles';
 import "./css/Main.css";
+import PartidasPausadas from './PartidasPausadas';
 
 class Main extends Component {
 
@@ -32,7 +33,7 @@ class Main extends Component {
     render() {
         const divStyle={
             overflowY: 'scroll',
-            height: '200px'
+            height: '100%'
           }
         return (
             
@@ -72,8 +73,13 @@ class Main extends Component {
 
                     <div style={divStyle} className="col-sm-6 col-md-6 col-lg-6">
                         <PartidasDisponibles usuario={this.props.usuario}/>
+                        <br/>
+                        <hr/>
+                        <br/>
+                        <PartidasPausadas usuario={this.props.usuario}/>
                     </div>
 
+                    
 
 
                 </div>

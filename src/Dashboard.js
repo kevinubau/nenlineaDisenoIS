@@ -123,6 +123,15 @@ class Dashboard extends Component {
 
   }
 
+  pausarJuego(juegoID){
+    var obj = {};
+    obj.id = juegoID
+    obj.descrip = "guardar";
+    this.client.validarPOST(obj);
+
+
+  }
+
   render() {
 
       
@@ -142,10 +151,27 @@ class Dashboard extends Component {
 
         return (
 
-          <div className="container">
-                     
+          <div className="container-fluid">
+
             <div className="row">
+              <div className="col-sm-12 col-md-12" >
+
+                <br/>
+                {this.state.juego.jugador2==="PCC"?(
+                  <input onClick={() => this.pausarJuego(this.state.juego.id)} type='button' disabled className='btn' value='Pausar'/>
+                ):(
+                  <input onClick={() => this.pausarJuego(this.state.juego.id)} type='button' className='btn' value='Pausar'/>
+
+                )
+                }
+                <h4><kbd>Fichas para ganar: {this.state.juego.cantFichasParaGanar}</kbd></h4>
+                <hr/>
+              </div>
+            </div>
+            <div className="row">
+            
               <div className="col-sm-8 col-md-8" style={divStyle}>
+
                 <h1>N en línea</h1>
 
                 <table style={style}>
@@ -173,7 +199,7 @@ class Dashboard extends Component {
                 </table>
 
               </div>
-
+                  
               <div className="col-sm-4 col-md-4">
                   <Chat usuario={this.props.usuario} juego={this.state.juego} />
                 
