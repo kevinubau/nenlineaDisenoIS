@@ -116,6 +116,7 @@ class SetUp extends Component {
                         <li><a onClick={() => this.opcionUser("pcFacil")}>Computadora Fácil</a></li>
                         <li><a onClick={() => this.opcionUser("pcIntermedio")}>Computadora Intermedio</a></li>
                         <li><a onClick={() => this.opcionUser("pcDificil")}>Computadora Difícil</a></li>
+                        <li><a onClick={() => this.opcionUser("PCPC")}>Computadora VS Computadora</a></li>
                       </ul>
                     </div>
                 

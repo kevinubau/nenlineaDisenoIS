@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import Client from './Client';
 import 'bootstrap/dist/css/bootstrap.css';
 import Chat from './Chat';
-
+import Main from './Main';
 class Dashboard extends Component {
 
   constructor(props){
     super(props);
 
-    this.state = {juego:{}}
+    this.state = {juego:{}, pausar:false}
     this.client = new Client();
  
   }
@@ -128,13 +128,17 @@ class Dashboard extends Component {
     obj.id = juegoID
     obj.descrip = "guardar";
     this.client.validarPOST(obj);
-
+    this.setState({pausar:true});
 
   }
 
   render() {
 
-      
+      if(this.state.pausar === true){
+
+
+          return <Main usuario={this.props.usuario} />
+      }
       if(this.state.juego.matriz !== undefined){
 
         const style = {
@@ -157,7 +161,7 @@ class Dashboard extends Component {
               <div className="col-sm-12 col-md-12" >
 
                 <br/>
-                {this.state.juego.jugador2==="PCC"?(
+                {this.state.juego.jugador2==="PC"?(
                   <input onClick={() => this.pausarJuego(this.state.juego.id)} type='button' disabled className='btn' value='Pausar'/>
                 ):(
                   <input onClick={() => this.pausarJuego(this.state.juego.id)} type='button' className='btn' value='Pausar'/>
